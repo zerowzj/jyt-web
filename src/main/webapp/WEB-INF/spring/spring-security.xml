@@ -4,21 +4,4 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-    <!-- ==================== -->
-    <!--         认证入口      -->
-    <!-- ==================== -->
-    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
-        <security:filter-chain-map request-matcher="ant">
-            <!-- 不过滤 -->
-            <security:filter-chain pattern="/static/**" filters="none"/>
-            <!-- 过滤 -->
-            <security:filter-chain pattern="/wechat/msg**" filters="wechatValidityFilter"/>
-            <security:filter-chain pattern="/**" filters="wechatAuthFilter"/>
-        </security:filter-chain-map>
-    </bean>
-    <!-- ==================== -->
-    <!--      自定义过滤器     -->
-    <!-- ==================== -->
-    <bean id="wechatValidityFilter" class="com.company.project.wechatweb.auth.filter.WechatValidFilter"/>
-    <bean id="wechatAuthFilter" class="com.company.project.wechatweb.auth.filter.WechatAuthFilter"/>
 </beans>
