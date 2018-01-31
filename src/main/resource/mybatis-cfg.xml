@@ -22,7 +22,6 @@
 
     <typeAliases>
         <typeAlias type="com.company.jytweb.dao.userbase.UserBaseEO" alias="UserBaseEO"/>
-        <typeAlias type="com.company.project.dao.orderbase.OrderBaseEO" alias="OrderBaseEO"/>
     </typeAliases>
 
     <plugins>
