@@ -2,6 +2,8 @@ package com.company.jytweb.dao.userbase;
 
 import com.company.jytweb.support.db.BaseEO;
 
+import java.util.Date;
+
 /**
  * 用户基本信息EO
  *
@@ -9,26 +11,18 @@ import com.company.jytweb.support.db.BaseEO;
  */
 public class UserBaseEO extends BaseEO {
 
-    /**
-     * 用户编号
-     */
+    /* 用户编号 */
     private Long ubId;
-    /**
-     * 登录名
-     */
+    /* 登录名 */
     private String ubLoginName;
-    /**
-     * 登录密码
-     */
+    /* 登录密码 */
     private String ubLoginPwd;
-    /**
-     * 用户类型
-     */
+    /* 用户类型 */
     private String ubType;
-    /**
-     * 用户状态
-     */
+    /* 用户状态 */
     private String ubStatus;
+    /* 创建时间 */
+    private Date ubBeginTime;
 
     public Long getUbId() {
         return ubId;
@@ -68,5 +62,13 @@ public class UserBaseEO extends BaseEO {
 
     public void setUbStatus(String ubStatus) {
         this.ubStatus = ubStatus;
+    }
+
+    public Date getUbBeginTime() {
+        return ubBeginTime;
+    }
+
+    public void setUbBeginTime(Date ubBeginTime) {
+        this.ubBeginTime = ubBeginTime;
     }
 }

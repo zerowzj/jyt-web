@@ -8,13 +8,15 @@
         <result property="ubLoginPwd" column="UB_LOGIN_PWD"/>
         <result property="ubType" column="UB_TYPE"/>
         <result property="ubStatus" column="UB_STATUS"/>
+        <result property="ubBeginTime" column="UB_BEGIN_TIME"/>
     </resultMap>
     <sql id="Base_Column_List">
         UB.UB_ID,
         UB.UB_LOGIN_NAME,
         UB.UB_LOGIN_PWD,
         UB.UB_TYPE,
-        UB.UB_STATUS
+        UB.UB_STATUS,
+        UB.UB_BEGIN_TIME
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="ubId" parameterType="UserBaseEO">
