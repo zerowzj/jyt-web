@@ -4,20 +4,25 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
-    <context:component-scan base-package="com.company.jytweb.service"
-                            use-default-filters="true">
+    <context:component-scan base-package="com.company.jytweb.service" use-default-filters="true">
     </context:component-scan>
 
-    <bean id="dataSource"></bean>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${ds.url}"/>
+        <property name="username" value="${ds.username}"/>
+        <property name="password" value="${ds.password}"/>
+    </bean>
 
+    <!--
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-cfg.xml"/>
         <property name="mapperLocations" value="classpath*:com/company/jytweb/dao/**/*.xml"/>
     </bean>
-    <!-- Mapper扫描器 -->
+    &lt;!&ndash; Mapper扫描器 &ndash;&gt;
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.company.project.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
+    </bean>-->
 </beans>
