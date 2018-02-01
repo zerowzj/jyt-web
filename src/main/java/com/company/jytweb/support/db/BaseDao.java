@@ -11,6 +11,7 @@ public interface BaseDao<PK, E extends BaseEO> {
      * 新增实体
      *
      * @param entity
+     * @return int
      */
     int insert(E entity);
 
@@ -18,6 +19,7 @@ public interface BaseDao<PK, E extends BaseEO> {
      * 更新实体
      *
      * @param entity
+     * @return int
      */
     int update(E entity);
 
@@ -25,6 +27,7 @@ public interface BaseDao<PK, E extends BaseEO> {
      * 删除实体
      *
      * @param pk
+     * @return int
      */
     int delete(PK pk);
 

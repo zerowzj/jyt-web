@@ -3,7 +3,7 @@ package com.company.jytweb.support.db;
 import java.io.Serializable;
 
 /**
- * 实体EO
+ * 基础EO
  *
  * @author wangzhj
  */
