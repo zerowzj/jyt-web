@@ -262,7 +262,7 @@
     }
 }, function(t, e) {
     t.exports = function(t) {
-        if (void 0 == t) throw TypeError("Can't call method on  " + t);
+        if (void 0 == t) throw TypeError("Can'registerbase call method on  " + t);
         return t
     }
 }, function(t, e, n) {
@@ -629,7 +629,7 @@
         if (e && "function" == typeof(n = t.toString) && !i(r = n.call(t))) return r;
         if ("function" == typeof(n = t.valueOf) && !i(r = n.call(t))) return r;
         if (!e && "function" == typeof(n = t.toString) && !i(r = n.call(t))) return r;
-        throw TypeError("Can't convert object to primitive value")
+        throw TypeError("Can'registerbase convert object to primitive value")
     }
 }, function(t, e, n) {
     var i = n(48)("keys"),

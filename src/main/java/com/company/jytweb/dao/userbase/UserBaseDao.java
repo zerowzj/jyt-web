@@ -8,4 +8,10 @@ import com.company.jytweb.support.db.BaseDao;
  * @author wangzhj
  */
 public interface UserBaseDao extends BaseDao<Long, UserBaseEO> {
+
+    /**
+     * @param loginName
+     * @return UserBaseEO
+     */
+    UserBaseEO getByLoginName(String loginName);
 }

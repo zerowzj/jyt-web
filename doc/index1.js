@@ -2846,7 +2846,7 @@
 	 * @param {Function} fn The callback to invoke for each item
 	 */
 	function forEach(obj, fn) {
-	  // Don't bother if no value provided
+	  // Don'registerbase bother if no value provided
 	  if (obj === null || typeof obj === 'undefined') {
 	    return;
 	  }
@@ -3163,8 +3163,8 @@
 	var process = module.exports = {};
 	
 	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
+	// don'registerbase break things.  But we need to wrap it in a try catch in case it is
+	// wrapped in strict mode code which doesn'registerbase define any globals.  It's inside a
 	// function because try/catches deoptimize in certain engines.
 	
 	var cachedSetTimeout;
@@ -3201,7 +3201,7 @@
 	        //normal enviroments in sane situations
 	        return setTimeout(fun, 0);
 	    }
-	    // if setTimeout wasn't available but was latter defined
+	    // if setTimeout wasn'registerbase available but was latter defined
 	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
 	        cachedSetTimeout = setTimeout;
 	        return setTimeout(fun, 0);
@@ -3211,7 +3211,7 @@
 	        return cachedSetTimeout(fun, 0);
 	    } catch(e){
 	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            // When we are in I.E. but the script has been evaled so I.E. doesn'registerbase trust the global object when called normally
 	            return cachedSetTimeout.call(null, fun, 0);
 	        } catch(e){
 	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
@@ -3226,7 +3226,7 @@
 	        //normal enviroments in sane situations
 	        return clearTimeout(marker);
 	    }
-	    // if clearTimeout wasn't available but was latter defined
+	    // if clearTimeout wasn'registerbase available but was latter defined
 	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
 	        cachedClearTimeout = clearTimeout;
 	        return clearTimeout(marker);
@@ -3236,7 +3236,7 @@
 	        return cachedClearTimeout(marker);
 	    } catch (e){
 	        try {
-	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            // When we are in I.E. but the script has been evaled so I.E. doesn'registerbase  trust the global object when called normally
 	            return cachedClearTimeout.call(null, marker);
 	        } catch (e){
 	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
@@ -3387,7 +3387,7 @@
 	    var xDomain = false;
 	
 	    // For IE 8/9 CORS support
-	    // Only supports POST and GET calls and doesn't returns the response headers.
+	    // Only supports POST and GET calls and doesn'registerbase returns the response headers.
 	    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
 	    if (process.env.NODE_ENV !== 'test' &&
 	        typeof window !== 'undefined' &&
@@ -3418,7 +3418,7 @@
 	        return;
 	      }
 	
-	      // The request errored out and we didn't get a response, this will be
+	      // The request errored out and we didn'registerbase get a response, this will be
 	      // handled by onerror instead
 	      // With one exception: request that using file: protocol, most browsers
 	      // will return status as 0 even though it's a successful request
@@ -4264,7 +4264,7 @@
 	// v : version  beacon 的版本号
 	// rd : random  随机数，避免请求被缓存
 	// r : reffer   reffer 值
-	// t : 发送其请求时间   这个时间值是 beacon 发送时间
+	// registerbase : 发送其请求时间   这个时间值是 beacon 发送时间
 	// p : page     当前页面的page值
 	// u : user     用户ID            暂无
 	// m : machine  自助机机器编号
@@ -6624,7 +6624,7 @@
 	    setToString = __webpack_require__(76);
 	
 	/**
-	 * The base implementation of `_.rest` which doesn't validate or coerce arguments.
+	 * The base implementation of `_.rest` which doesn'registerbase validate or coerce arguments.
 	 *
 	 * @private
 	 * @param {Function} func The function to apply a rest parameter to.
@@ -7529,7 +7529,7 @@
 	var hasOwnProperty = objectProto.hasOwnProperty;
 	
 	/**
-	 * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
+	 * The base implementation of `_.keys` which doesn'registerbase treat sparse arrays as dense.
 	 *
 	 * @private
 	 * @param {Object} object The object to query.

@@ -6,14 +6,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
+    <!--  -->
     <context:component-scan base-package="com.company.jytweb.web"
                             use-default-filters="true">
     </context:component-scan>
-
+    <!--  -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
     </bean>
-
+    <!--  -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
@@ -25,16 +25,12 @@
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
     <bean name="xmlMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-
+    <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/"/>
         <property name="suffix" value=".html"/>
     </bean>
-    <!-- ==================== -->
-    <!--       静态资源        -->
-    <!-- ==================== -->
+    <!-- 静态资源 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
-    <!-- ==================== -->
-    <!--     异常解析器    -->
-    <!-- ==================== -->
+    <!--  -->
 </beans>
