@@ -1,8 +1,8 @@
 package com.company.jytweb.support.jyt.card;
 
-import com.company.jytweb.support.jyt.Constants;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
+import com.company.jytweb.support.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;
@@ -41,9 +41,9 @@ public class CardApi {
         }
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false)
-                .userAgent(Constants.USER_AGENT);
-        request.header(Constants.HEADER_COOKIE, "")
-                .header(Constants.HEADER_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
+                .userAgent(JytConstants.USER_AGENT);
+        request.header(JytConstants.HEADER_COOKIE, "")
+                .header(JytConstants.HEADER_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
         //响应
         String body = request.body();
         LOGGER.info(body);
