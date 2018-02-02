@@ -33,7 +33,7 @@ public class DepartmentApi {
         params.put("hosCode", hosCode);
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false)
-                .userAgent(JytConstants.USER_AGENT);
+                .userAgent(JytConstants.USER_AGENT_VALUE);
         request.header(JytConstants.HEADER_NAME_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
         //响应
         String body = request.body();

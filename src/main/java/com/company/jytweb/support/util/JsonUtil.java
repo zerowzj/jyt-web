@@ -3,7 +3,12 @@ package com.company.jytweb.support.util;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonUtil {
+/**
+ * Json Util
+ *
+ * @author wangzhj
+ */
+public abstract class JsonUtil {
 
     /**
      * 对象转Json
@@ -40,15 +45,19 @@ public class JsonUtil {
     }
 
     /**
+     * Json转对象
+     *
      * @param str
-     * @param clazz
-     * @param clazz
+     * @param parametrized
+     * @param parameterClazz
+     * @return T
      */
-    public static <T> T fromJson(String str, Class<T> clazz, Class<?> clazz1) {
+    public static <T> T fromJson(String str, Class<T> parametrized, Class<?> parameterClazz) {
         ObjectMapper mapper = new ObjectMapper();
         T t = null;
         try {
-            JavaType javaType = mapper.getTypeFactory().constructParametricType(clazz, clazz1);
+            JavaType javaType = mapper.getTypeFactory()
+                    .constructParametricType(parametrized, parameterClazz);
             t = mapper.readValue(str, javaType);
         } catch (Exception ex) {
             ex.printStackTrace();

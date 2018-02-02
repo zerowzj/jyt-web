@@ -45,7 +45,7 @@ public class RegisterNoApi {
 //        HttpRequest request = HttpRequest.get("https://wechat.benmu-health.com/mobile/wx/product/dic/detail?_=1517302552681&hosCode=H111511&firstDeptCode=mn_fst_nk_852c7b&secondDeptCode=190&date=2018-01-30&status=SOLD_OUT&extra=true&xa7w6pf=3d28548367c6ea75a974eae28b032184 ", params, true);
         HttpRequest request = HttpRequest.get(URL, params, true);
         LOGGER.info(request.toString());
-        request.userAgent(JytConstants.USER_AGENT)
+        request.userAgent(JytConstants.USER_AGENT_VALUE)
                 .header("ucp", "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
         String body = request.body();
         LOGGER.info(body);

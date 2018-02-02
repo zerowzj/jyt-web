@@ -26,7 +26,7 @@ public class HospitalApi {
     public static Resp<HospitalData> getHospitalLt() {
         //请求
         HttpRequest request = HttpRequest.post(URL)
-                .userAgent(JytConstants.USER_AGENT);
+                .userAgent(JytConstants.USER_AGENT_VALUE);
         request.header("ucp", "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
         //响应
         String body = request.body();

@@ -36,7 +36,7 @@ public class SignInApi {
         params.put("password", DigestUtils.md5Hex(pwd));
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false)
-                .userAgent(JytConstants.USER_AGENT);
+                .userAgent(JytConstants.USER_AGENT_VALUE);
         request.header(JytConstants.HEADER_NAME_COOKIE, "")
                 .header(JytConstants.HEADER_NAME_UCP, "lw7OO71jLwQVfTfMD4QoKXImsz1sYudnN-uu--3_t0VVunIxXrjwwB6vF37o_yvZneAlvw..");
         //响应
