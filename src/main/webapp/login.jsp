@@ -12,6 +12,10 @@
     <script src="/static/js/login.js" type="text/javascript"></script>
 </head>
 <body>
-
+<form action="/login" method="post">
+    用户名：<input type="text" name="loginName">
+    密码：<input type="text" name="loginPwd">
+    <input type="submit" value="登录" />
+</form>
 </body>
 </html>

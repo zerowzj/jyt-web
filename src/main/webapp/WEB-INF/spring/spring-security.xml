@@ -17,9 +17,8 @@
         <security:custom-filter ref="watchDogFilter" before="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER"/>
-        <security:custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR"/>
         <!--<securinty:access-denied-handler ref="accessDeniedHandler"/>-->
-        <security:csrf disabled="true"/>
+        <!--<security:csrf disabled="false"/>-->
     </security:http>
     <!-- 登录入口 -->
     <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">

@@ -27,14 +27,13 @@ public class SignInApi {
      *
      * @param phone
      * @param pwd
-     * @return Resp<CardData>
+     * @return Resp<String>
      */
     public static Resp<String> signIn(String phone, String pwd) {
         //参数
         Map<String, Object> params = Maps.newHashMap();
         params.put("phone", phone);
-        params.put("password", pwd);
-
+        params.put("password", DigestUtils.md5Hex(pwd));
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false)
                 .userAgent(JytConstants.USER_AGENT);
@@ -48,7 +47,6 @@ public class SignInApi {
     }
 
     public static void main(String[] args) {
-        signIn("15210207356", "b82037ae6a3214342d9822dde5ef30b1");
-        System.out.println(DigestUtils.md5Hex("15210207356"));
+        signIn("15210207356", "wzj0211432");
     }
 }

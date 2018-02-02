@@ -43,5 +43,4 @@ public class JytCookie {
     public String getAttention() {
         return cookies.get(KEY_NAME_ATTENTION);
     }
-
 }
