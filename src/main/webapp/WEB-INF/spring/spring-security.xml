@@ -4,4 +4,76 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+    <!-- ==================== -->
+    <!--     认证及授权入口     -->
+    <!-- ==================== -->
+    <security:http entry-point-ref="loginEntryPoint" use-expressions="false">
+        <!-- 拦截url -->
+        <security:intercept-url pattern="/login.jsp**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+        <!-- 过滤器链 -->
+        <security:custom-filter ref="watchDogFilter" before="FORM_LOGIN_FILTER"/>
+        <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER"/>
+        <security:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER"/>
+        <security:custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR"/>
+        <!--<securinty:access-denied-handler ref="accessDeniedHandler"/>-->
+        <security:csrf disabled="true"/>
+    </security:http>
+    <!-- 登录入口 -->
+    <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg value="/login.jsp?msg=please_login"/>
+    </bean>
+    <!-- ==================== -->
+    <!--      认证管理器       -->
+    <!-- ==================== -->
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider ref="daoAuthenticationProvider"/>
+    </security:authentication-manager>
+    <!-- Dao认证提供者 -->
+    <bean id="daoAuthenticationProvider"
+          class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService" ref="userDetailsService"/>
+        <!--<property name="passwordEncoder" ref="md5PasswordEncoder"/>-->
+    </bean>
+    <bean id="userDetailsService" class="com.company.jytweb.auth.user.CustomUserDetailsService"/>
+    <bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder">
+        <property name="encodeHashAsBase64" value="true"/>
+    </bean>
+    <!-- 认证过滤器 -->
+    <bean id="customLoginFilter" class="com.company.jytweb.auth.filter.CustomLoginFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="filterProcessesUrl" value="/login"/>
+        <property name="usernameParameter" value="loginName"/>
+        <property name="passwordParameter" value="loginPwd"/>
+        <property name="authenticationSuccessHandler" ref="successHandler"/>
+        <property name="authenticationFailureHandler" ref="failureHandler"/>
+    </bean>
+    <!-- 登录成功 -->
+    <bean id="successHandler" class="com.company.jytweb.auth.handler.LoginSuccessHandler">
+        <property name="defaultTargetUrl" value="/index.jsp"/>
+        <property name="alwaysUseDefaultTargetUrl" value="true"/>
+    </bean>
+    <!-- 登录失败 -->
+    <bean id="failureHandler" class="com.company.jytweb.auth.handler.LoginFailureHandler">
+        <property name="defaultFailureUrl" value="/login.jsp?msg=login_failure"/>
+    </bean>
+    <!-- ==================== -->
+    <!--      注销过滤器       -->
+    <!-- ==================== -->
+    <bean id="customLogoutFilter" class="com.company.jytweb.auth.filter.CustomLogoutFilter">
+        <property name="filterProcessesUrl" value="/logout"/>
+        <constructor-arg index="0" value="/login.jsp?msg=logout_success"/>
+        <constructor-arg index="1">
+            <array>
+                <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+                <bean class="com.company.jytweb.auth.handler.CustomLogoutHandler"/>
+            </array>
+        </constructor-arg>
+    </bean>
+    <!-- ==================== -->
+    <!--     自定义过滤器      -->
+    <!-- ==================== -->
+    <bean id="watchDogFilter" class="com.company.jytweb.auth.filter.WatchDogFilter"/>
 </beans>
