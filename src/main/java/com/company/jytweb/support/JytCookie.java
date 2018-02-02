@@ -12,15 +12,16 @@ import java.util.Map;
  */
 public class JytCookie {
 
-    private Map<String, String> cookies;
-
+    /*  */
     private static final String KEY_NAME_UCP = "_ucp";
-
+    /*  */
     private static final String KEY_NAME_ATTENTION = "_attention";
+
+    private Map<String, String> cookies;
 
     public JytCookie(String cookie) {
         if (Strings.isNullOrEmpty(cookie)) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException("cookie is null or empty");
         }
         cookies = Splitter.on(";").trimResults().withKeyValueSeparator("=").split(cookie);
     }

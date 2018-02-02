@@ -34,7 +34,7 @@ public class DepartmentApi {
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false)
                 .userAgent(JytConstants.USER_AGENT);
-        request.header(JytConstants.HEADER_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
+        request.header(JytConstants.HEADER_NAME_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
         //响应
         String body = request.body();
         LOGGER.info(body);
