@@ -50,6 +50,7 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
     <select id="get" parameterType="java.lang.Long" resultMap="userJytInfoEO">
         SELECT
         <include refid="Base_Column_List"/>
