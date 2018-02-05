@@ -19,7 +19,7 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomLoginFilter.class);
 
-    private static final String CAPTCHA_PARAM_NAME = "authCode";
+    private static final String PARAM_NAME_CAPTCHA = "authCode";
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -37,12 +37,10 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
         return super.attemptAuthentication(request, response);
     }
 
-    //获取验证码
     private String obtainCaptcha(HttpServletRequest request) {
-        return request.getParameter(CAPTCHA_PARAM_NAME);
+        return request.getParameter(PARAM_NAME_CAPTCHA);
     }
 
-    //获取
     private String getCaptchaKey(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         String value = null;
