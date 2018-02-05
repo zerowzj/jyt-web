@@ -42,18 +42,18 @@ public class UserServiceImpl implements UserService {
         UserJytInfoEO ujiEO = new UserJytInfoEO();
         if (ujiEO == null) {
             ujiEO = new UserJytInfoEO();
-            ujiEO.setUjiJytLoginName(jytLoginName);
-            ujiEO.setUjiJytLoginPwd(jytLoginPwd);
-            ujiEO.setUjiJytCookie(jytCookie);
+        }
+        ujiEO.setUjiJytLoginName(jytLoginName);
+        ujiEO.setUjiJytLoginPwd(jytLoginPwd);
+        ujiEO.setUjiJytCookie(jytCookie);
+        JytCookie cookie = new JytCookie(jytCookie);
+        ujiEO.setUjiJytHeaderUcp(cookie.getUcp());
+        ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
+        ujiEO.setUjiJytHeaderLgd(cookie.getLgd());
+        //
+        if (ujiEO == null) {
             userJytInfoDao.insert(ujiEO);
         } else {
-            ujiEO.setUjiJytLoginName(jytLoginName);
-            ujiEO.setUjiJytLoginPwd(jytLoginPwd);
-            ujiEO.setUjiJytCookie(jytCookie);
-            JytCookie cookie = new JytCookie(jytCookie);
-            ujiEO.setUjiJytHeaderUcp(cookie.getUcp());
-            ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
-            ujiEO.setUjiJytHeaderLgd(cookie.getLgd());
             userJytInfoDao.update(ujiEO);
         }
     }

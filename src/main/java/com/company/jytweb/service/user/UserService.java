@@ -8,7 +8,7 @@ package com.company.jytweb.service.user;
 public interface UserService {
 
     /**
-     * 注册基本信息
+     * 注册用户信息
      *
      * @param loginName
      * @param loginPwd
@@ -16,11 +16,12 @@ public interface UserService {
     void checkInUser(String loginName, String loginPwd);
 
     /**
-     * 注册京医通信息
+     * 绑定京医通信息
      *
+     * @param ubId
      * @param jytLoginName
      * @param jytLoginPwd
      * @param jytCookie
      */
-    void checkInJytInfo(String jytLoginName, String jytLoginPwd, String jytCookie);
+    void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie);
 }
