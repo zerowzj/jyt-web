@@ -27,9 +27,9 @@ public class JytCookieCache {
     @Autowired
     private UserJytInfoDao userJytInfoDao;
 
-    /*  */
     public static JytCookieCache JYT_COOKIE_CACHE;
-    /*  */
+
+    /* JytCookie缓存 */
     private static LoadingCache<Long, JytCookie> CACHE = Caffeine.newBuilder()
             .maximumSize(10000)
             .expireAfterWrite(10, TimeUnit.SECONDS)
@@ -37,11 +37,9 @@ public class JytCookieCache {
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
-                    LOGGER.info("sadfffffffffffffffffffffffffffload...");
                     UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
-                    return null;
+                    return new JytCookie(ujiEO.getUjiJytCookie());
                 }
-
             });
 
     @PostConstruct
@@ -57,14 +55,16 @@ public class JytCookieCache {
      */
     public static JytCookie get(Long ubId) {
         JytCookie cookie = CACHE.getIfPresent(ubId);
-//        if (cookie == null) {
-//            LOGGER.info("===> get jyt cookie of [ub={}] from db", ubId);
-//            UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(ubId);
-//            if (ujiEO != null) {
-//                cookie = new JytCookie(ujiEO.getUjiJytCookie());
-//                CACHE.put(ubId, cookie);
-//            }
-//        }
         return cookie;
+    }
+
+    /**
+     * 刷新JytCookie
+     *
+     * @param ubId
+     * @return JytCookie
+     */
+    public static void refresh(Long ubId) {
+        CACHE.refresh(ubId);
     }
 }
