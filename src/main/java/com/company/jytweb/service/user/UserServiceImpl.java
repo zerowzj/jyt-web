@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
     private UserBaseDao userBaseDao;
 
     @Override
-    public void checkIn(String loginName, String loginPwd) {
+    public void checkInUser(String loginName, String loginPwd) {
         UserBaseEO ubEO = new UserBaseEO();
         ubEO.setUbLoginName(loginName);
         ubEO.setUbLoginPwd(loginPwd);
@@ -21,5 +21,10 @@ public class UserServiceImpl implements UserService {
         ubEO.setUbType("");
         ubEO.setUbBeginTime(DateTime.now().toDate());
         userBaseDao.insert(ubEO);
+    }
+
+    @Override
+    public void checkInJytInfo(String jytLoginName, String jytLoginPwd, String jytCookie) {
+
     }
 }

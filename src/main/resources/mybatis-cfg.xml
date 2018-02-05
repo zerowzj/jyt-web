@@ -22,6 +22,7 @@
 
     <typeAliases>
         <typeAlias type="com.company.jytweb.dao.userbase.UserBaseEO" alias="UserBaseEO"/>
+        <typeAlias type="com.company.jytweb.dao.userjytinfo.UserJytInfoEO" alias="UserJytInfoEO"/>
     </typeAliases>
 
     <plugins>
