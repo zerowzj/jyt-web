@@ -5,7 +5,6 @@ import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.support.jyt.JytCookie;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +32,8 @@ public class JytCookieCache {
     }
 
     /**
+     * 获取JytCookie
+     *
      * @param ubId
      * @return JytCookie
      */
@@ -40,8 +41,9 @@ public class JytCookieCache {
         JytCookie cookie = CACHE.getIfPresent(ubId);
         if (cookie == null) {
             UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(ubId);
-            if (ujiEO != null && !Strings.isNullOrEmpty(ujiEO.getUjiJytCookie())) {
+            if (ujiEO != null) {
                 cookie = new JytCookie(ujiEO.getUjiJytCookie());
+                CACHE.put(ubId, cookie);
             }
         }
         return cookie;
