@@ -52,7 +52,6 @@ public class UserServiceImpl implements UserService {
         ujiEO.setUjiJytLoginName(jytLoginName);
         ujiEO.setUjiJytLoginPwd(jytLoginPwd);
         ujiEO.setUjiJytCookie(jytCookie);
-
         ujiEO.setUjiJytHeaderUcp(cookie.getUcp());
         ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
         ujiEO.setUjiJytHeaderLgd(cookie.getLgd());

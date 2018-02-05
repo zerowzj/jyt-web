@@ -37,8 +37,11 @@ public class JytCookieCache {
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
+                    LOGGER.info("sadfffffffffffffffffffffffffffload...");
+                    UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
                     return null;
                 }
+
             });
 
     @PostConstruct
@@ -54,14 +57,14 @@ public class JytCookieCache {
      */
     public static JytCookie get(Long ubId) {
         JytCookie cookie = CACHE.getIfPresent(ubId);
-        if (cookie == null) {
-            LOGGER.info("===> get jyt cookie of [ub={}] from db", ubId);
-            UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(ubId);
-            if (ujiEO != null) {
-                cookie = new JytCookie(ujiEO.getUjiJytCookie());
-                CACHE.put(ubId, cookie);
-            }
-        }
+//        if (cookie == null) {
+//            LOGGER.info("===> get jyt cookie of [ub={}] from db", ubId);
+//            UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(ubId);
+//            if (ujiEO != null) {
+//                cookie = new JytCookie(ujiEO.getUjiJytCookie());
+//                CACHE.put(ubId, cookie);
+//            }
+//        }
         return cookie;
     }
 }
