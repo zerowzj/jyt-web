@@ -3,7 +3,7 @@ package com.company.jytweb.support.jyt;
 import java.io.Serializable;
 
 /**
- * 响应
+ * 京医通响应
  *
  * @author wangzhj
  */
