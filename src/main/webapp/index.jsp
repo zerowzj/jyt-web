@@ -3,13 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>`````````````
+    <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="/static/layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layo````ut-admin">
+<div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">控制台</a></li>
@@ -38,13 +37,10 @@
             <li class="layui-nav-item"><a href="">退了</a></li>
         </ul>
     </div>
-
-
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">内容主体区域</div>
+        <div>内容主体区域</div>
     </div>
-
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         © layui.com - 底部固定区域
@@ -53,9 +49,8 @@
 <script src="/static/layui/layui.js"></script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
-
     });
 </script>
 </body>
