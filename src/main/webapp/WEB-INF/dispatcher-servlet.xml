@@ -6,24 +6,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-    <!--  -->
+    <!-- Bean扫描 -->
     <context:component-scan base-package="com.company.jytweb.web" use-default-filters="true">
     </context:component-scan>
-    <!--  -->
+    <!-- 处理器映射 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
     </bean>
-    <!--  -->
+    <!-- 处理器适配 -->
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <ref bean="jsonMessageConverter"/>
+                <ref bean="jsonMsgConverter"/>
             </list>
         </property>
     </bean>
-    <bean name="jsonMessageConverter"
-          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-    <bean name="xmlMessageConverter"
-          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    <bean name="jsonMsgConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/"/>

@@ -9,9 +9,9 @@
     <!-- ==================== -->
     <security:http entry-point-ref="loginEntryPoint" use-expressions="false">
         <!-- 拦截url -->
-        <security:intercept-url pattern="/login.jsp**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+        <security:intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/static" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/static/layui/css" access="IS_AUTHENTICATED_FULLY"/>
         <!-- 过滤器链 -->
         <security:custom-filter ref="watchDogFilter" before="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER"/>
