@@ -8,13 +8,14 @@
   "secondDeptId": "5414",
 
   "treatmentDay": "2018-02-09",
-  "regHour": "",
   "productTimeType": "AM",
+  "regHour": "",
+
+  "productType": "VICE",
+  "doctorId": "8676812",
 
   "productId": "MD5_8518228025b60678ac7f09987faddb63",
-  "doctorId": "8676812",
-  "productType": "VICE",
-  "price": "0",
   "orderProductType": "0",
-  "orderFrom": "REGISTER"
+  "orderFrom": "REGISTER",
+  "price": "0"
 }
