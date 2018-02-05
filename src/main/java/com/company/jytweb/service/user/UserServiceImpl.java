@@ -63,4 +63,9 @@ public class UserServiceImpl implements UserService {
             userJytInfoDao.insert(ujiEO);
         }
     }
+
+    @Override
+    public UserJytInfoEO getJytInfo(Long ubId) {
+        return userJytInfoDao.getByUbId(ubId);
+    }
 }

@@ -1,5 +1,7 @@
 package com.company.jytweb.service.user;
 
+import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
+
 /**
  * 用户服务
  *
@@ -16,7 +18,7 @@ public interface UserService {
     void checkInUser(String loginName, String loginPwd);
 
     /**
-     * 绑定京医通
+     * 绑定京医通信息
      *
      * @param ubId
      * @param jytLoginName
@@ -24,4 +26,11 @@ public interface UserService {
      * @param jytCookie
      */
     void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie);
+
+    /**
+     * 获取京医通信息
+     *
+     * @param ubId
+     */
+    UserJytInfoEO getJytInfo(Long ubId);
 }
