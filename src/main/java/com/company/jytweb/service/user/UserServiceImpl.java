@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService {
         ubEO.setUbStatus("");
         ubEO.setUbType("");
         ubEO.setUbBeginTime(DateTime.now().toDate());
+        //
         userBaseDao.insert(ubEO);
     }
 
