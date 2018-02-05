@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.userjytinfo.UserJytInfoDao">
+    <resultMap id="userJytInfoEO" type="UserJytInfoEO">
+        <result property="ujiId" column="UJI_ID"/>
+        <result property="ujiUbId" column="UJI_UB_ID"/>
+        <result property="ujiJytLoginName" column="UJI_JYT_LOGIN_NAME"/>
+        <result property="ujiJytLoginPwd" column="UJI_JYT_LOGIN_PWD"/>
+        <result property="ujiJytCookie" column="UJI_JYT_COOKIE"/>
+        <result property="ujiJytHeaderUcp" column="UJI_JYT_HEADER_UCP"/>
+        <result property="ujiJytHeaderAttention" column="UJI_JYT_HEADER_ATTENTION"/>
+        <result property="ujiJytHeaderLgd" column="UJI_JYT_HEADER_LGD"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UJI.UJI_ID,
+        UJI.UJI_UB_ID,
+        UJI.UJI_JYT_LOGIN_NAME,
+        UJI.UJI_JYT_LOGIN_PWD,
+        UJI.UJI_JYT_COOKIE,
+        UJI.UJI_JYT_HEADER_UCP,
+        UJI.UJI_JYT_HEADER_ATTENTION,
+        UJI.UJI_JYT_HEADER_LGD
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ujiId" parameterType="UserJytInfoEO">
+        INSERT INTO USER_BASE (UB_LOGIN_NAME, UB_LOGIN_PWD
+        <if test="ubType != null">
+            ,UB_TYPE
+        </if>
+        <if test="ubStatus != null">
+            ,UB_STATUS
+        </if>
+        )
+        VALUES (#{ubLoginName}, #{ubLoginPwd}
+        <if test="ubType != null">
+            ,#{ubType}
+        </if>
+        <if test="ubStatus != null">
+            ,#{ubStatus}
+        </if>
+        )
+        <selectKey keyProperty="ubId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+    <select id="get" parameterType="java.lang.Long" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_ID = #{ubId}
+    </select>
+</mapper>
