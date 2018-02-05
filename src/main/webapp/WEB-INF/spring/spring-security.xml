@@ -11,7 +11,6 @@
         <!-- 拦截url -->
         <security:intercept-url pattern="/login.jsp**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/api/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
         <!-- 过滤器链 -->
         <security:custom-filter ref="watchDogFilter" before="FORM_LOGIN_FILTER"/>
