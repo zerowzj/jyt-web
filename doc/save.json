@@ -1,0 +1,20 @@
+{
+  "cardNo": "11046100300X",
+
+  "hosCode": "H111511",
+  "firstDeptCode": "mn_fst_nk_852c7b",
+  "secondDeptCode": "181",
+  "firstDeptId": "743693",
+  "secondDeptId": "5414",
+
+  "treatmentDay": "2018-02-09",
+  "regHour": "",
+  "productTimeType": "AM",
+
+  "productId": "MD5_8518228025b60678ac7f09987faddb63",
+  "doctorId": "8676812",
+  "productType": "VICE",
+  "price": "0",
+  "orderProductType": "0",
+  "orderFrom": "REGISTER"
+}

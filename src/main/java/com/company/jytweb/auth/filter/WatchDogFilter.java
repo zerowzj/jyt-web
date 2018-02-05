@@ -43,7 +43,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
             //继续执行
             filterChain.doFilter(request, response);
         } finally {
-            LOGGER.info("uri[{}]cost[{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
+            LOGGER.info("uri[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
             MDC.clear();
         }
     }
