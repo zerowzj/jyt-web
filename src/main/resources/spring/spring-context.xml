@@ -4,16 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    <!-- Bean扫描 -->
     <context:component-scan base-package="com.company.jytweb" use-default-filters="true">
     </context:component-scan>
-
+    <!-- 数据源 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="${ds.url}"/>
         <property name="username" value="${ds.username}"/>
         <property name="password" value="${ds.password}"/>
     </bean>
-
+    <!-- Sql Session -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-cfg.xml"/>
@@ -24,4 +25,6 @@
         <property name="basePackage" value="com.company.jytweb.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
+    <!--  -->
+    <bean class="com.company.jytweb.support.JytCookieCache"/>
 </beans>
