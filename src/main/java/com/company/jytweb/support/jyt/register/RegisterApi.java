@@ -1,7 +1,7 @@
 package com.company.jytweb.support.jyt.register;
 
 import com.company.jytweb.support.util.JsonUtil;
-import com.company.jytweb.support.JytConstants;
+import com.company.jytweb.support.jyt.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;

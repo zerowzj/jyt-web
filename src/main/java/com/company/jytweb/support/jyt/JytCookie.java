@@ -1,4 +1,4 @@
-package com.company.jytweb.support;
+package com.company.jytweb.support.jyt;
 
 import com.google.common.base.Splitter;
 import com.google.common.base.Strings;

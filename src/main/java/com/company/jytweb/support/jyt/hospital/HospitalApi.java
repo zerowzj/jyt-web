@@ -2,7 +2,7 @@ package com.company.jytweb.support.jyt.hospital;
 
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
-import com.company.jytweb.support.JytConstants;
+import com.company.jytweb.support.jyt.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

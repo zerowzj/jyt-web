@@ -1,6 +1,6 @@
 package com.company.jytweb.support.jyt.signin;
 
-import com.company.jytweb.support.JytConstants;
+import com.company.jytweb.support.jyt.JytConstants;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
 import com.github.kevinsawicki.http.HttpRequest;

@@ -1,4 +1,4 @@
-package com.company.jytweb.support;
+package com.company.jytweb.support.jyt;
 
 /**
  * 京医通常量
