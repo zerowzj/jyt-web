@@ -13,14 +13,14 @@ public abstract class JsonUtil {
     /**
      * 对象转Json
      *
-     * @param obj
+     * @param t
      * @return String
      */
-    public static String toJson(Object obj) {
+    public static <T> String toJson(T t) {
         ObjectMapper mapper = new ObjectMapper();
         String str = null;
         try {
-            str = mapper.writeValueAsString(obj);
+            str = mapper.writeValueAsString(t);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -31,6 +31,7 @@ public abstract class JsonUtil {
      * Json转对象
      *
      * @param str
+     * @param clazz
      * @return T
      */
     public static <T> T fromJson(String str, Class<T> clazz) {
