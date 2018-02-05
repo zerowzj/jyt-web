@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.company.project.dao.userbase.UserBaseDao">
+<mapper namespace="com.company.jytweb.dao.userbase.UserBaseDao">
     <resultMap id="userBaseEO" type="UserBaseEO">
         <result property="ubId" column="UB_ID"/>
         <result property="ubLoginName" column="UB_LOGIN_NAME"/>

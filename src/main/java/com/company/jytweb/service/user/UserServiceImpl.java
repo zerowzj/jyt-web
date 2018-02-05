@@ -4,7 +4,7 @@ import com.company.jytweb.dao.userbase.UserBaseDao;
 import com.company.jytweb.dao.userbase.UserBaseEO;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoDao;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
-import com.company.jytweb.support.JytCookie;
+import com.company.jytweb.support.jyt.JytCookie;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.jyt.signin.SignInApi;
 import org.joda.time.DateTime;
@@ -34,22 +34,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie) {
         //
+        JytCookie cookie = new JytCookie(jytCookie);
+        //
         Resp<String> resp = SignInApi.signIn(jytLoginName, jytLoginPwd);
         int resCode = resp.getResCode();
         if (resCode != 0) {
-            throw new IllegalStateException("");
+            throw new IllegalStateException("绑定失败");
         }
         //
-        UserJytInfoEO ujiEO = new UserJytInfoEO();
+        UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(ubId);
         boolean is_update = true;
         if (ujiEO == null) {
             ujiEO = new UserJytInfoEO();
             is_update = false;
         }
+        ujiEO.setUjiUbId(ubId);
         ujiEO.setUjiJytLoginName(jytLoginName);
         ujiEO.setUjiJytLoginPwd(jytLoginPwd);
         ujiEO.setUjiJytCookie(jytCookie);
-        JytCookie cookie = new JytCookie(jytCookie);
+
         ujiEO.setUjiJytHeaderUcp(cookie.getUcp());
         ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
         ujiEO.setUjiJytHeaderLgd(cookie.getLgd());
@@ -57,7 +60,7 @@ public class UserServiceImpl implements UserService {
         if (is_update) {
             userJytInfoDao.update(ujiEO);
         } else {
-            userJytInfoDao.update(ujiEO);
+            userJytInfoDao.insert(ujiEO);
         }
     }
 }

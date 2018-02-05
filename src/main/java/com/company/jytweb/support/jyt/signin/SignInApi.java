@@ -38,7 +38,7 @@ public class SignInApi {
         HttpRequest request = HttpRequest.get(URL, params, false)
                 .userAgent(JytConstants.USER_AGENT_VALUE);
         request.header(JytConstants.HEADER_NAME_COOKIE, "")
-                .header(JytConstants.HEADER_NAME_UCP, "lw7OO71jLwQVfTfMD4QoKXImsz1sYudnN-uu--3_t0VVunIxXrjwwB6vF37o_yvZneAlvw..");
+                .header(JytConstants.HEADER_NAME_UCP, "xlf2k3rQR3QENziaZHI35J0Nb4L-lq1YiDA7qvtEwU4ehFkeI_5zlU-aJQRc2o6pnUOW-w..");
         //响应
         String body = request.body();
         LOGGER.info(body);

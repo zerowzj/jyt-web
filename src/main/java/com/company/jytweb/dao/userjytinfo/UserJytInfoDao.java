@@ -8,4 +8,12 @@ import com.company.jytweb.support.db.BaseDao;
  * @author wangzhj
  */
 public interface UserJytInfoDao extends BaseDao<Long, UserJytInfoEO> {
+
+    /**
+     * 获取用户京医通信息
+     *
+     * @param ubId
+     * @return UserJytInfoEO
+     */
+    UserJytInfoEO getByUbId(Long ubId);
 }
