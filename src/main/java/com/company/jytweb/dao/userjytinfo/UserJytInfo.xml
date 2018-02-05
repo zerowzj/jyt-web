@@ -24,30 +24,36 @@
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="ujiId" parameterType="UserJytInfoEO">
-        INSERT INTO USER_BASE (UB_LOGIN_NAME, UB_LOGIN_PWD
-        <if test="ubType != null">
-            ,UB_TYPE
+        INSERT INTO USER_BASE (UJI_UB_ID, UJI_JYT_LOGIN_NAME, UJI_JYT_LOGIN_PWD, UJI_JYT_COOKIE
+        <if test="ujiJytHeaderUcp != null">
+            ,UJI_JYT_HEADER_UCP
         </if>
         <if test="ubStatus != null">
-            ,UB_STATUS
-        </if>
-        )
-        VALUES (#{ubLoginName}, #{ubLoginPwd}
-        <if test="ubType != null">
-            ,#{ubType}
+            ,UJI_JYT_HEADER_ATTENTION
         </if>
         <if test="ubStatus != null">
-            ,#{ubStatus}
+            ,UJI_JYT_HEADER_LGD
         </if>
         )
-        <selectKey keyProperty="ubId" resultType="java.lang.Long" order="AFTER">
+        VALUES (#{ujiUbId}, #{ujiJytLoginName}, #{ujiJytLoginPwd}, #{ujiJytCookie}
+        <if test="ujiJytHeaderUcp != null">
+            ,#{ujiJytHeaderUcp}
+        </if>
+        <if test="ujiJytHeaderAttention != null">
+            ,#{ujiJytHeaderAttention}
+        </if>
+        <if test="ujiJytHeaderLgd != null">
+            ,#{ujiJytHeaderLgd}
+        </if>
+        )
+        <selectKey keyProperty="ujiId" resultType="java.lang.Long" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
-    <select id="get" parameterType="java.lang.Long" resultMap="userBaseEO">
+    <select id="get" parameterType="java.lang.Long" resultMap="userJytInfoEO">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM USER_BASE UB
-        WHERE UB.UB_ID = #{ubId}
+        FROM USER_JYT_INFO UJI
+        WHERE UJI.UB_ID = #{ubId}
     </select>
 </mapper>
