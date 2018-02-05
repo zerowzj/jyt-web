@@ -40,8 +40,10 @@ public class UserServiceImpl implements UserService {
         }
         //
         UserJytInfoEO ujiEO = new UserJytInfoEO();
+        boolean is_update = true;
         if (ujiEO == null) {
             ujiEO = new UserJytInfoEO();
+            is_update = false;
         }
         ujiEO.setUjiJytLoginName(jytLoginName);
         ujiEO.setUjiJytLoginPwd(jytLoginPwd);
@@ -51,8 +53,8 @@ public class UserServiceImpl implements UserService {
         ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
         ujiEO.setUjiJytHeaderLgd(cookie.getLgd());
         //
-        if (ujiEO == null) {
-            userJytInfoDao.insert(ujiEO);
+        if (is_update) {
+            userJytInfoDao.update(ujiEO);
         } else {
             userJytInfoDao.update(ujiEO);
         }

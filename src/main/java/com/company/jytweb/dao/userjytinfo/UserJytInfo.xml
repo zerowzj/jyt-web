@@ -28,10 +28,10 @@
         <if test="ujiJytHeaderUcp != null">
             ,UJI_JYT_HEADER_UCP
         </if>
-        <if test="ubStatus != null">
+        <if test="ujiJytHeaderAttention != null">
             ,UJI_JYT_HEADER_ATTENTION
         </if>
-        <if test="ubStatus != null">
+        <if test="ujiJytHeaderLgd != null">
             ,UJI_JYT_HEADER_LGD
         </if>
         )
@@ -50,6 +50,13 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="userJytInfoEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_JYT_INFO UJI
+        WHERE UJI.UB_ID = #{ubId}
+    </select>
 
     <select id="get" parameterType="java.lang.Long" resultMap="userJytInfoEO">
         SELECT
