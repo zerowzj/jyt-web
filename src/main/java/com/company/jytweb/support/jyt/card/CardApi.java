@@ -34,7 +34,7 @@ public class CardApi {
         Map<String, Object> params = Maps.newHashMap();
         if (Strings.isNullOrEmpty(cardNo)) {
             params.put("queryAll", true);
-            params.put("cardNo", CharMatcher.whitespace());
+            params.put("cardNo", "");
         } else {
             params.put("queryAll", false);
             params.put("cardNo", cardNo);
