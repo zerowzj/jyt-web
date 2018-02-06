@@ -20,12 +20,12 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         UserBaseEO ubEO = null;
-        if (ubEO == null) {
-            throw new UsernameNotFoundException("");
-        }
+//        if (ubEO == null) {
+//            throw new UsernameNotFoundException("");
+//        }
         //用户详情
-        CustomUserDetails userDetails = new CustomUserDetails(username, ubEO.getUbLoginPwd());
-        userDetails.setUbId(ubEO.getUbId());
+        CustomUserDetails userDetails = new CustomUserDetails(username, "123123");
+//        userDetails.setUbId(ubEO.getUbId());
         //返回
         return userDetails;
     }
