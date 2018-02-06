@@ -3,7 +3,7 @@ package com.company.jytweb.support.jyt;
 import java.io.Serializable;
 
 /**
- * 京医通响应
+ * JYT响应
  *
  * @author wangzhj
  */
@@ -15,6 +15,10 @@ public class Resp<T> implements Serializable {
     private String msg;
     /* 数据 */
     private T data;
+
+    public boolean ok() {
+        return resCode == 0;
+    }
 
     public int getResCode() {
         return resCode;

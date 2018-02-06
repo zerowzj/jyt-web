@@ -1,6 +1,6 @@
 package com.company.jytweb.support.jyt.signin;
 
-import com.company.jytweb.support.jyt.JytConstants;
+import com.company.jytweb.support.jyt.JytHeaders;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -35,10 +35,8 @@ public class SignInApi {
         params.put("phone", phone);
         params.put("password", DigestUtils.md5Hex(pwd));
         //请求
-        HttpRequest request = HttpRequest.get(URL, params, false)
-                .userAgent(JytConstants.USER_AGENT_VALUE);
-        request.header(JytConstants.HEADER_NAME_COOKIE, "")
-                .header(JytConstants.HEADER_NAME_UCP, "xlf2k3rQR3QENziaZHI35J0Nb4L-lq1YiDA7qvtEwU4ehFkeI_5zlU-aJQRc2o6pnUOW-w..");
+        HttpRequest request = HttpRequest.get(URL, params, false);
+        JytHeaders.build(request);
         //响应
         String body = request.body();
         LOGGER.info(body);

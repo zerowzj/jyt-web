@@ -6,7 +6,7 @@ import com.google.common.base.Strings;
 import java.util.Map;
 
 /**
- * 京医通Cookie
+ * JYT Cookie
  *
  * @author wangzhj
  */

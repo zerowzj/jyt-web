@@ -2,7 +2,6 @@ package com.company.jytweb.support.jyt.card;
 
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
-import com.company.jytweb.support.jyt.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Strings;

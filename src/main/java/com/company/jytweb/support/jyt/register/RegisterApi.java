@@ -1,7 +1,7 @@
 package com.company.jytweb.support.jyt.register;
 
+import com.company.jytweb.support.jyt.JytHeaders;
 import com.company.jytweb.support.util.JsonUtil;
-import com.company.jytweb.support.jyt.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -43,9 +43,8 @@ public class RegisterApi {
         params.put("orderFrom", "REGISTER");
         params.put("cardNo", "11046100300X");
 
-        HttpRequest request = HttpRequest.post(URL)
-                .userAgent(JytConstants.USER_AGENT_VALUE)
-                .header("ucp", "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..")
+        HttpRequest request = HttpRequest.post(URL);
+        JytHeaders.build(request)
                 .send(JsonUtil.toJson(params));
         LOGGER.info(request.body());
     }

@@ -1,8 +1,8 @@
 package com.company.jytweb.support.jyt.hospital;
 
+import com.company.jytweb.support.jyt.JytHeaders;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
-import com.company.jytweb.support.jyt.JytConstants;
 import com.github.kevinsawicki.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +25,8 @@ public class HospitalApi {
      */
     public static Resp<HospitalData> getHospitalLt() {
         //请求
-        HttpRequest request = HttpRequest.post(URL)
-                .userAgent(JytConstants.USER_AGENT_VALUE);
-        request.header("ucp", "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
+        HttpRequest request = HttpRequest.post(URL);
+        JytHeaders.build(request);
         //响应
         String body = request.body();
         Resp<HospitalData> resp = JsonUtil.fromJson(body, Resp.class, HospitalData.class);
