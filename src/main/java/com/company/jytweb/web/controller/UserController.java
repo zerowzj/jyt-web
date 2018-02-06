@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/jyt")
-public class BindController {
+public class UserController {
 
     @Autowired
     private UserService userService;
