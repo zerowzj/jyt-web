@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.servlet.http.Cookie;
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,38 +19,21 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomLoginFilter.class);
 
-    private static final String PARAM_NAME_CAPTCHA = "authCode";
+    /*  */
+    public static String PARAM_NAME_USER_NAME;
+
+    @PostConstruct
+    public void init() {
+        PARAM_NAME_USER_NAME = getUsernameParameter();
+    }
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-
-        LOGGER.info("AAAAAAA");
-        //获取验证码
-        String captcha = obtainCaptcha(request);
-        //验证
-//        String captchaKey = getCaptchaKey(request);
-        /*boolean flag = imageCaptchaService.validateResponseForID(captchaKey, inputCaptcha);
-        if (!flag){
-            throw new CaptchaException("验证码错误");
-        }*/
-        //
+        LOGGER.info("用户[{}]登录系统", getLoginName(request));
         return super.attemptAuthentication(request, response);
     }
 
-    private String obtainCaptcha(HttpServletRequest request) {
-        return request.getParameter(PARAM_NAME_CAPTCHA);
-    }
-
-    private String getCaptchaKey(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        String value = null;
-        for (Cookie cookie : cookies) {
-            String cookieName = cookie.getName();
-            if ("captcha_key".equals(cookieName)) {
-                value = cookie.getValue();
-                break;
-            }
-        }
-        return value;
+    public static String getLoginName(HttpServletRequest request) {
+        return request.getParameter(PARAM_NAME_USER_NAME);
     }
 }

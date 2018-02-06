@@ -1,5 +1,6 @@
 package com.company.jytweb.auth.handler;
 
+import com.company.jytweb.auth.filter.CustomLoginFilter;
 import com.company.jytweb.auth.user.CustomUserDetails;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +28,10 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //获取认证信息
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
-
         LOGGER.info("===>用户[{}]登录成功!", userDetails.getUsername());
+        //TODO
 
-//        //执行父逻辑
-//        super.onAuthenticationSuccess(request, response, authentication);
-
-        response.sendRedirect("http://localhost:8080/index.jsp");
+        //执行父逻辑
+        super.onAuthenticationSuccess(request, response, authentication);
     }
 }
