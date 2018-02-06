@@ -8,6 +8,7 @@ import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/jyt")
-public class BindController {
+public class JytController {
 
     @Autowired
     private UserService userService;
@@ -32,8 +33,12 @@ public class BindController {
     }
 
     @RequestMapping("/bind")
-    public void bind() {
+    @ResponseBody
+    public Map<String, Object> bind(HttpServletRequest request) {
         JytCookie cookie = JytCookieCache.get(1111L);
         System.out.println(cookie.getUcp());
+        Map<String, Object> data = Maps.newHashMap();
+
+        return data;
     }
 }

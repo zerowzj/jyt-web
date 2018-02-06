@@ -14,26 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/jyt")
+@RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-
-    @RequestMapping("/toBind")
-    public ModelAndView toBind(HttpServletRequest request) {
-        UserJytInfoEO ujiEO = userService.getJytInfo(111L);
-        //
-        Map<String, Object> data = Maps.newHashMap();
-        data.put("jytLoginName", ujiEO.getUjiJytLoginName());
-        data.put("jytLoginPwd", ujiEO.getUjiJytLoginPwd());
-        data.put("jytCookie", ujiEO.getUjiJytCookie());
-        return new ModelAndView("/jyt/bind", data);
-    }
-
-    @RequestMapping("/bind")
-    public void bind() {
-        JytCookie cookie = JytCookieCache.get(1111L);
-        System.out.println(cookie.getUcp());
-    }
 }
