@@ -43,47 +43,14 @@
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/role/toAdd" target=right>新增角色</a>
+                        <a class=menuchild href="/role/toAdd" target=right>挂号</a>
                     </td>
                 </tr>
                 <tr height=20>
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/role/list" target=right>角色列表</a>
-                    </td>
-                </tr>
-                <tr height=4>
-                    <td colspan=2></td>
-                </tr>
-            </table>
-
-
-            <table cellspacing=0 cellpadding=0 width=150 border=0>
-                <tr height=22>
-                    <td style="padding-left: 30px" background=../../static/img/menu_bt.jpg>
-                        <a class=menuparent onclick=expand(2) href="javascript:void(0);">用户管理</a>
-                    </td>
-                </tr>
-                <tr height=4>
-                    <td></td>
-                </tr>
-            </table>
-            <table id=child2 cellspacing=0 cellpadding=0 width=150 border=0>
-                <tr height=20>
-                    <td align=middle width=30>
-                        <img height=9 src="../../static/img/menu_icon.gif" width=9>
-                    </td>
-                    <td>
-                        <a class=menuchild href="/user/toAdd" target=right>注册用户</a>
-                    </td>
-                </tr>
-                <tr height=20>
-                    <td align=middle width=30>
-                        <img height=9 src="../../static/img/menu_icon.gif" width=9>
-                    </td>
-                    <td>
-                        <a class=menuchild href="/user/list" target=right>用户列表</a>
+                        <a class=menuchild href="/role/list" target=right>挂号列表</a>
                     </td>
                 </tr>
                 <tr height=4>
@@ -104,6 +71,17 @@
             </table>
             <table id=child0 cellspacing=0 cellpadding=0
                    width=150 border=0>
+                <tr height=20>
+                    <td align=middle width=30>
+                        <img height=9 src="../../static/img/menu_icon.gif" width=9>
+                    </td>
+                    <td>
+                        <a class=menuchild href="/jyt/toBind" target=right>绑定京医通</a>
+                    </td>
+                </tr>
+                <tr height=4>
+                    <td colspan=2></td>
+                </tr>
                 <tr height=20>
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9>

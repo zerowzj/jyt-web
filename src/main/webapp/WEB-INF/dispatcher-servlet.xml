@@ -20,11 +20,12 @@
             </list>
         </property>
     </bean>
+    <!-- 报文转换器 -->
     <bean name="jsonMsgConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/view/"/>
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
     <!-- 拦截器 -->
     <mvc:interceptors>
