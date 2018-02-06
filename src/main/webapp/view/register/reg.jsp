@@ -44,6 +44,27 @@
                 </td>
             </tr>
             <tr>
+                <td style="width:15%"><span class="need">*</span>科室</td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:15%"><span class="need">*</span>二级科室</td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:15%"><span class="need">*</span>就诊时间</td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:15%"><span class="need">*</span>就诊时段</td>
+                <td>
+                    <input type="checkbox" name="">上午 <input type="checkbox">下午
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2" align="center">
                     <input type="submit" value="新增"> &nbsp;
                     <input type="button" value="返回" onclick="javascript:history.go(-1)">
