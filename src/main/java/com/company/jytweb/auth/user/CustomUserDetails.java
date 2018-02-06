@@ -12,6 +12,8 @@ import java.util.List;
  */
 public class CustomUserDetails implements UserDetails {
 
+    /* 用户编号 */
+    private Long ubId;
     /* 登录名 */
     private String loginName;
     /* 登录密码 */
@@ -61,5 +63,17 @@ public class CustomUserDetails implements UserDetails {
 
     public void setGrantedAuthLt(List<SimpleGrantedAuthority> grantedAuthLt) {
         this.grantedAuthLt = grantedAuthLt;
+    }
+
+    public List<SimpleGrantedAuthority> getGrantedAuthLt() {
+        return grantedAuthLt;
+    }
+
+    public void setUbId(Long ubId) {
+        this.ubId = ubId;
+    }
+
+    public Long getUbId() {
+        return ubId;
     }
 }

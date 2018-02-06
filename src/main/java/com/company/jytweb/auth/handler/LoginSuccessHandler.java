@@ -1,7 +1,8 @@
 package com.company.jytweb.auth.handler;
 
-import com.company.jytweb.auth.filter.CustomLoginFilter;
 import com.company.jytweb.auth.user.CustomUserDetails;
+import com.company.jytweb.support.util.SessionUtil;
+import com.company.jytweb.web.SessionUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,7 +30,11 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
         LOGGER.info("===>用户[{}]登录成功!", userDetails.getUsername());
+
         //TODO
+        SessionUserInfo userInfo = new SessionUserInfo();
+        userInfo.setUbId(userDetails.getUbId());
+        SessionUtil.setUserInfo(request, userInfo);
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
