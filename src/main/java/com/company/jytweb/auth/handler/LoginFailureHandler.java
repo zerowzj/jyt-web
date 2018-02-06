@@ -25,20 +25,13 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
-        exception.printStackTrace();
         logger.warn("用户[{}]登录系统失败！", CustomLoginFilter.getLoginName(request));
         if (exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException) {
             logger.error("用户名/密码错误");
-//           ServletUtil.setSessionObj(request, "msg", "用户名/密码错误！");
         } else {
             logger.error("未知错误");
-//           ServletUtil.setSessionObj(request, "msg", "未知错误，请联系系统管理员！");
         }
 
         super.onAuthenticationFailure(request, response, exception);
-    }
-
-    private String getLoginName(HttpServletRequest request) {
-        return request.getParameter("loginName");
     }
 }
