@@ -1,6 +1,6 @@
 package com.company.jytweb.support.util;
 
-import com.company.jytweb.web.SessionUserInfo;
+import com.company.jytweb.web.support.SessionUserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
  */
 public abstract class SessionUtil {
 
-    private static final String SESSION_USER_INFO_KEY = "com.company.jytweb.web.SessionUserInfo";
+    private static final String SESSION_USER_INFO_KEY = "com.company.jytweb.web.support.SessionUserInfo";
 
     /**
      * 设置SessionUserInfo

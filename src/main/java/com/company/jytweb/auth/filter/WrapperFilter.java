@@ -2,7 +2,7 @@ package com.company.jytweb.auth.filter;
 
 import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.support.util.SessionUtil;
-import com.company.jytweb.web.SessionUserInfo;
+import com.company.jytweb.web.support.SessionUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;

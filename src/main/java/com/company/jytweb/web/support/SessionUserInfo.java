@@ -1,4 +1,4 @@
-package com.company.jytweb.web;
+package com.company.jytweb.web.support;
 
 /**
  * 用户会话信息
