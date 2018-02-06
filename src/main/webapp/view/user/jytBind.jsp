@@ -59,7 +59,12 @@
                 return true;
             },
             success: function (responseText, statusText, xhr, $form) {
+                alert(statusText);
                 layer.msg('绑定成功', {icon: 1});
+            },
+            error: function (xhr, statusText, error) {
+                var status = xhr.status;
+                layer.alert('系统异常[' + status + ']', {icon: 5});
             }
         });
     </script>
