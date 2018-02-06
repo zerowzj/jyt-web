@@ -1,9 +1,12 @@
 package com.company.jytweb.web.controller;
 
+import com.company.jytweb.auth.UserInfos;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.service.user.UserService;
 import com.company.jytweb.support.JytCookieCache;
 import com.company.jytweb.support.jyt.JytCookie;
+import com.company.jytweb.support.util.SessionUtil;
+import com.company.jytweb.web.SessionUserInfo;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +26,9 @@ public class JytController {
 
     @RequestMapping("/toBind")
     public ModelAndView toBind(HttpServletRequest request) {
-        UserJytInfoEO ujiEO = userService.getJytInfo(111L);
+        Long ubId = UserInfos.getUbId();
+        UserJytInfoEO ujiEO = userService.getJytInfo(ubId);
+        SessionUserInfo userInfo = SessionUtil.getUserInfo(request);
         //
         Map<String, Object> data = Maps.newHashMap();
         data.put("jytLoginName", ujiEO.getUjiJytLoginName());

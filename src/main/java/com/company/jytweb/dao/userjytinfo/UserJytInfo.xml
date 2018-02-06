@@ -8,42 +8,36 @@
         <result property="ujiJytLoginName" column="UJI_JYT_LOGIN_NAME"/>
         <result property="ujiJytLoginPwd" column="UJI_JYT_LOGIN_PWD"/>
         <result property="ujiJytCookie" column="UJI_JYT_COOKIE"/>
-        <result property="ujiJytHeaderUcp" column="UJI_JYT_HEADER_UCP"/>
-        <result property="ujiJytHeaderAttention" column="UJI_JYT_HEADER_ATTENTION"/>
-        <result property="ujiJytHeaderLgd" column="UJI_JYT_HEADER_LGD"/>
     </resultMap>
     <sql id="Base_Column_List">
         UJI.UJI_ID,
         UJI.UJI_UB_ID,
         UJI.UJI_JYT_LOGIN_NAME,
         UJI.UJI_JYT_LOGIN_PWD,
-        UJI.UJI_JYT_COOKIE,
-        UJI.UJI_JYT_HEADER_UCP,
-        UJI.UJI_JYT_HEADER_ATTENTION,
-        UJI.UJI_JYT_HEADER_LGD
+        UJI.UJI_JYT_COOKIE
     </sql>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="ujiId" parameterType="UserJytInfoEO">
-        INSERT INTO USER_BASE (UJI_UB_ID, UJI_JYT_LOGIN_NAME, UJI_JYT_LOGIN_PWD, UJI_JYT_COOKIE
-        <if test="ujiJytHeaderUcp != null">
-            ,UJI_JYT_HEADER_UCP
+        INSERT INTO USER_JYT_INFO (UJI_UB_ID
+        <if test="ujiJytLoginName != null">
+            ,UJI_JYT_LOGIN_NAME
         </if>
-        <if test="ujiJytHeaderAttention != null">
-            ,UJI_JYT_HEADER_ATTENTION
+        <if test="ujiJytLoginPwd != null">
+            ,UJI_JYT_LOGIN_PWD
         </if>
-        <if test="ujiJytHeaderLgd != null">
-            ,UJI_JYT_HEADER_LGD
+        <if test="ujiJytCookie != null">
+            ,UJI_JYT_COOKIE
         </if>
         )
-        VALUES (#{ujiUbId}, #{ujiJytLoginName}, #{ujiJytLoginPwd}, #{ujiJytCookie}
-        <if test="ujiJytHeaderUcp != null">
-            ,#{ujiJytHeaderUcp}
+        VALUES (#{ujiUbId}
+        <if test="ujiJytLoginName != null">
+            ,#{ujiJytLoginName}
         </if>
-        <if test="ujiJytHeaderAttention != null">
-            ,#{ujiJytHeaderAttention}
+        <if test="ujiJytLoginPwd != null">
+            ,#{ujiJytLoginPwd}
         </if>
-        <if test="ujiJytHeaderLgd != null">
-            ,#{ujiJytHeaderLgd}
+        <if test="ujiJytCookie != null">
+            ,#{ujiJytCookie}
         </if>
         )
         <selectKey keyProperty="ujiId" resultType="java.lang.Long" order="AFTER">
@@ -51,12 +45,6 @@
         </selectKey>
     </insert>
 
-    <select id="get" parameterType="java.lang.Long" resultMap="userJytInfoEO">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM USER_JYT_INFO UJI
-        WHERE UJI.UB_ID = #{ubId}
-    </select>
     <select id="getByUbId" parameterType="java.lang.Long" resultMap="userJytInfoEO">
         SELECT
         <include refid="Base_Column_List"/>

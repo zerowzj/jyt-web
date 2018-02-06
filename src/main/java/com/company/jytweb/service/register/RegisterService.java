@@ -7,8 +7,4 @@ package com.company.jytweb.service.register;
  */
 public interface RegisterService {
 
-    /**
-     * 生成挂号记录
-     */
-    void checkIn();
 }

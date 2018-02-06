@@ -1,4 +1,7 @@
 package com.company.jytweb.service.register;
 
-public class RegisterServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service("registerService")
+public class RegisterServiceImpl implements RegisterService {
 }

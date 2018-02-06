@@ -1,10 +1,17 @@
 package com.company.jytweb.auth;
 
+import com.google.common.collect.Maps;
+
 import java.util.Map;
 
 public class UserInfos {
 
-    private static ThreadLocal<Map<String, Object>> THREAD_LOCAL = new ThreadLocal();
+    private static ThreadLocal<Map<String, Object>> THREAD_LOCAL = new ThreadLocal() {
+        @Override
+        protected Map<String, Object> initialValue() {
+            return Maps.newHashMap();
+        }
+    };
 
     private static final String KEY_UB_ID = "UB_ID";
 

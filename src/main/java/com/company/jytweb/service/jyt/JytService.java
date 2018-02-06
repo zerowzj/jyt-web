@@ -1,14 +1,26 @@
 package com.company.jytweb.service.jyt;
 
+import java.util.List;
+import java.util.Map;
+
 /**
- * 挂号服务
+ * JYT服务
  *
  * @author wangzhj
  */
 public interface JytService {
 
     /**
-     * 生成挂号记录
+     * 获取医保卡列表
+     *
+     * @return List
      */
-    void checkIn();
+    List<Map<String, Object>> getCardLt();
+
+    /**
+     * 获取医院列表
+     *
+     * @return List
+     */
+    List<Map<String, Object>> getHosLt();
 }

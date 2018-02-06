@@ -40,10 +40,17 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
     <select id="get" parameterType="java.lang.Long" resultMap="userBaseEO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM USER_BASE UB
         WHERE UB.UB_ID = #{ubId}
+    </select>
+    <select id="getByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
     </select>
 </mapper>

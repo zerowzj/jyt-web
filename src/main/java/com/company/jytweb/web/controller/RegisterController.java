@@ -1,5 +1,7 @@
 package com.company.jytweb.web.controller;
 
+import com.company.jytweb.service.register.RegisterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,18 +12,25 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/register")
 public class RegisterController {
 
+    @Autowired
+    private RegisterService registerService;
+
     @RequestMapping("/toReg")
-    public ModelAndView toBind(HttpServletRequest request) {
-        return new ModelAndView("/jyt/bind");
+    public ModelAndView toReg(HttpServletRequest request) {
+        //医保卡列表
+        //医院列表
+        return new ModelAndView("/register/reg");
     }
 
     @RequestMapping("/reg")
-    public ModelAndView toB1ind(HttpServletRequest request) {
-        return new ModelAndView("/jyt/bind");
+    public ModelAndView reg(HttpServletRequest request) {
+        //医保卡列表
+        //医院列表
+        return new ModelAndView("/register/reg");
     }
 
-    @RequestMapping("/reg_l")
-    public ModelAndView toB1ind11(HttpServletRequest request) {
-        return new ModelAndView("/jyt/bind");
+    @RequestMapping("/list")
+    public ModelAndView list(HttpServletRequest request) {
+        return new ModelAndView("/register/regList");
     }
 }
