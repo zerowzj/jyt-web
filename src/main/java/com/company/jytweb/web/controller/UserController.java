@@ -4,7 +4,6 @@ import com.company.jytweb.auth.UserInfos;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.service.user.UserService;
 import com.company.jytweb.support.JytCookieCache;
-import com.company.jytweb.support.jyt.JytCookie;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,15 +30,17 @@ public class UserController {
         data.put("jytLoginName", ujiEO.getUjiJytLoginName());
         data.put("jytLoginPwd", ujiEO.getUjiJytLoginPwd());
         data.put("jytCookie", ujiEO.getUjiJytCookie());
-        return new ModelAndView("user/bind", data);
+        return new ModelAndView("user/jytBind", data);
     }
 
     @RequestMapping("/bind_jyt")
     @ResponseBody
-    public Map<String, Object> bind(HttpServletRequest request) {
+    public Map<String, Object> bind(String jytLoginName, String jytLoginPwd, String jytCookie) {
         Long ubId = UserInfos.getUbId();
-        JytCookie cookie = JytCookieCache.get(ubId);
-        System.out.println(cookie.getUcp());
+        userService.bindJytInfo(ubId, jytLoginName, jytLoginPwd, jytCookie);
+
+        JytCookieCache.refresh(ubId);
+
         Map<String, Object> data = Maps.newHashMap();
         return data;
     }
