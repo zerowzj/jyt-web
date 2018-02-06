@@ -17,8 +17,8 @@ public class ExceptionResolver {
 
     @ExceptionHandler(Throwable.class)
     public Object resolveException(Exception ex) {
+        ex.printStackTrace();
         LOGGER.error("发生异常", ex);
-
         return null;
     }
 }

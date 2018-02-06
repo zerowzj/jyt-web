@@ -1,7 +1,7 @@
 package com.company.jytweb.web;
 
 /**
- * 用户回话信息
+ * 用户会话信息
  *
  * @author wangzhj
  */

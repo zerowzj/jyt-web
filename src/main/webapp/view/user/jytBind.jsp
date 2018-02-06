@@ -55,9 +55,9 @@
             url: '/user/bind_jyt',
             type: 'POST',
             clearForm: false,
-            beforeSubmit: function (formData, jqForm, options) {
-                return true;
-            },
+            // beforeSubmit: function (formData, jqForm, options) {
+            //     return true;
+            // },
             success: function (responseText, statusText, xhr, $form) {
                 alert(statusText);
                 layer.msg('绑定成功', {icon: 1});

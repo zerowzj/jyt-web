@@ -21,6 +21,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 跳转到JYT绑定页面
+     */
     @RequestMapping("/to_bind")
     public ModelAndView toBind(HttpServletRequest request) {
         Long ubId = UserInfos.getUbId();
@@ -33,6 +36,9 @@ public class UserController {
         return new ModelAndView("user/jytBind", data);
     }
 
+    /**
+     * 绑定JYT信息
+     */
     @RequestMapping("/bind_jyt")
     @ResponseBody
     public Map<String, Object> bind(String jytLoginName, String jytLoginPwd, String jytCookie) {

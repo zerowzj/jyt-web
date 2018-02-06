@@ -15,13 +15,19 @@ public class RegisterController {
     @Autowired
     private RegisterService registerService;
 
-    @RequestMapping("/toReg")
+    /**
+     * 跳转到JYT绑定页面
+     */
+    @RequestMapping("/to_reg")
     public ModelAndView toReg(HttpServletRequest request) {
         //医保卡列表
         //医院列表
         return new ModelAndView("/register/reg");
     }
 
+    /**
+     * 跳转到JYT绑定页面
+     */
     @RequestMapping("/reg")
     public ModelAndView reg(HttpServletRequest request) {
         //医保卡列表
@@ -29,6 +35,9 @@ public class RegisterController {
         return new ModelAndView("/register/reg");
     }
 
+    /**
+     * 跳转到JYT绑定页面
+     */
     @RequestMapping("/list")
     public ModelAndView list(HttpServletRequest request) {
         return new ModelAndView("/register/regList");

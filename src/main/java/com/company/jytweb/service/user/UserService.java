@@ -18,7 +18,7 @@ public interface UserService {
     void checkInUser(String loginName, String loginPwd);
 
     /**
-     * 绑定京医通信息
+     * 绑定JYT信息
      *
      * @param ubId
      * @param jytLoginName
@@ -28,7 +28,7 @@ public interface UserService {
     void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie);
 
     /**
-     * 获取京医通信息
+     * 获取JYT信息
      *
      * @param ubId
      */
