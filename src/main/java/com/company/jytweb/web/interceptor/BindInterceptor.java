@@ -28,11 +28,11 @@ public class BindInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-        UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(null);
-        if (ujiEO == null || Strings.isNullOrEmpty(ujiEO.getUjiJytCookie())) {
-            response.sendRedirect("");
-            return false;
-        }
+//        UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(null);
+//        if (ujiEO == null || Strings.isNullOrEmpty(ujiEO.getUjiJytCookie())) {
+//            response.sendRedirect("");
+//            return false;
+//        }
         return true;
     }
 }

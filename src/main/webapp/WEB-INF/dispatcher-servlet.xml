@@ -26,7 +26,13 @@
         <property name="prefix" value="/view/"/>
         <property name="suffix" value=".html"/>
     </bean>
-    <!-- 异常处理器 -->
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.company.jytweb.web.interceptor.BindInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!-- 静态资源 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
 </beans>
