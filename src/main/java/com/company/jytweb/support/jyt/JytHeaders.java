@@ -1,5 +1,7 @@
 package com.company.jytweb.support.jyt;
 
+import com.company.jytweb.auth.UserInfos;
+import com.company.jytweb.support.JytCookieCache;
 import com.github.kevinsawicki.http.HttpRequest;
 
 /**
@@ -18,7 +20,7 @@ public class JytHeaders {
     private static String HEADER_NAME_UCP = "ucp";
     /* Attention Header Name*/
     private static String HEADER_NAME_ATTENTION = "attention";
-    /* Ucp Header Name*/
+    /* Lgd Header Name*/
     private static String HEADER_NAME_LGD = "lgd";
 
     /**
@@ -28,9 +30,13 @@ public class JytHeaders {
      * @return HttpRequest
      */
     public static HttpRequest build(HttpRequest request) {
+        Long ubId = UserInfos.getUbId();
+        JytCookie cookie = JytCookieCache.get(ubId);
         request.userAgent(USER_AGENT_VALUE)
-                .header(HEADER_NAME_COOKIE, "")
-                .header(HEADER_NAME_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
+                .header(HEADER_NAME_COOKIE, cookie.getCookie())
+                .header(HEADER_NAME_UCP, cookie.getUcp())
+                .header(HEADER_NAME_ATTENTION, cookie.getAttention())
+                .header(HEADER_NAME_LGD, cookie.getLgd());
         return request;
     }
 }

@@ -19,6 +19,8 @@ public class JytCookie {
     /* Key Name Lgd */
     private static final String KEY_NAME_LGD = "_lgd";
 
+    private String cookie;
+
     private Map<String, String> cookies;
 
     public JytCookie(String cookie) {
@@ -26,6 +28,16 @@ public class JytCookie {
             throw new IllegalArgumentException("cookie is null or empty");
         }
         cookies = Splitter.on(";").trimResults().withKeyValueSeparator("=").split(cookie);
+        this.cookie = cookie;
+    }
+
+    /**
+     * 获取Cookie
+     *
+     * @return String
+     */
+    public String getCookie() {
+        return this.cookie;
     }
 
     /**

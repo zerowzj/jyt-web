@@ -1,5 +1,6 @@
 package com.company.jytweb.support.jyt.card;
 
+import com.company.jytweb.support.jyt.JytHeaders;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.util.JsonUtil;
 import com.github.kevinsawicki.http.HttpRequest;
@@ -39,10 +40,8 @@ public class CardApi {
             params.put("cardNo", cardNo);
         }
         //请求
-        HttpRequest request = HttpRequest.get(URL, params, false)
-                .userAgent(JytConstants.USER_AGENT_VALUE);
-        request.header(JytConstants.HEADER_NAME_COOKIE, "")
-                .header(JytConstants.HEADER_NAME_UCP, "Jq24qwPy5-crmvSyCtKZ3dWKbDdswHeWMX7VGVDpmKvUK4BpPg05VEsdMxXD-0lV0GNNNA..");
+        HttpRequest request = HttpRequest.get(URL, params, false);
+        JytHeaders.build(request);
         //响应
         String body = request.body();
         LOGGER.info(body);
