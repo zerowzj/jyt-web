@@ -15,6 +15,7 @@
         <!-- 过滤器链 -->
         <security:custom-filter ref="watchDogFilter" before="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLoginFilter" position="FORM_LOGIN_FILTER"/>
+        <security:custom-filter ref="wrapperFilter222" after="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLogoutFilter" position="LOGOUT_FILTER"/>
         <!--<securinty:access-denied-handler ref="accessDeniedHandler"/>-->
         <!--<security:csrf disabled="false"/>-->
@@ -74,4 +75,5 @@
     <!--     自定义过滤器      -->
     <!-- ==================== -->
     <bean id="watchDogFilter" class="com.company.jytweb.auth.filter.WatchDogFilter"/>
+    <bean id="wrapperFilter222" class="com.company.jytweb.auth.filter.WrapperFilter"/>
 </beans>

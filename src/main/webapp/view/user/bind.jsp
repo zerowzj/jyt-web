@@ -19,17 +19,16 @@
 </div>
 <div></div>
 <div style="font-size: 13px;margin: 10px 5px">
-    <form id="_form" action="/system/pwdModify" method="post">
+    <form id="_form" action="#">
         <table border="1" width="100%" class="table_a">
             <tr>
                 <td style="width:15%"><span class="need">*</span>京医通登录名</td>
-                <td><input type="text" name="jytLoginName" value="${jytLoginName}" datatype="s6-16" nullmsg="请输入新密码！">
+                <td><input type="text" name="jytLoginName" value="${jytLoginName}">
                 </td>
             </tr>
             <tr>
                 <td><span class="need">*</span>京医通登录密码</td>
-                <td><input type="password" name="jytLoginPwd" value="${jytLoginPwd}" datatype="s6-16"
-                           nullmsg="请输入确认新密码！" recheck='ubLoginPwd'></td>
+                <td><input type="password" name="jytLoginPwd" value="${jytLoginPwd}"></td>
             </tr>
             <tr>
                 <td><span class="need">*</span>Cookie</td>
@@ -42,14 +41,26 @@
             </tr>
         </table>
     </form>
-    <script type="text/javascript" src="<%=baseUrl%>/static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=baseUrl%>/static/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=baseUrl%>/static/jqueryform/jquery.form.min.js"></script>
     <script type="text/javascript" src="<%=baseUrl%>/static/validform/Validform_v5.3.2_min.js"></script>
     <script type="text/javascript" src="<%=baseUrl%>/static/layer/layer.js"></script>
     <script type="text/javascript">
-        //验证
         $("#_form").Validform({
             tiptype: 3,
             tipSweep: false
+        });
+        $('#_form').ajaxForm({
+            target: '',
+            url: '/user/bind_jyt',
+            type: 'POST',
+            clearForm: false,
+            beforeSubmit: function (formData, jqForm, options) {
+                return true;
+            },
+            success: function (responseText, statusText, xhr, $form) {
+                layer.msg('绑定成功', {icon: 1});
+            }
         });
     </script>
 </div>

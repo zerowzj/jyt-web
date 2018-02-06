@@ -34,8 +34,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie) {
         //
-        JytCookie cookie = new JytCookie(jytCookie);
-        //
         Resp<String> resp = SignInApi.signIn(jytLoginName, jytLoginPwd);
         int resCode = resp.getResCode();
         if (resCode != 0) {
@@ -52,9 +50,6 @@ public class UserServiceImpl implements UserService {
         ujiEO.setUjiJytLoginName(jytLoginName);
         ujiEO.setUjiJytLoginPwd(jytLoginPwd);
         ujiEO.setUjiJytCookie(jytCookie);
-        ujiEO.setUjiJytHeaderUcp(cookie.getUcp());
-        ujiEO.setUjiJytHeaderAttention(cookie.getAttention());
-        ujiEO.setUjiJytHeaderLgd(cookie.getLgd());
         //
         if (is_update) {
             userJytInfoDao.update(ujiEO);

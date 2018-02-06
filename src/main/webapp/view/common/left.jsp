@@ -43,14 +43,14 @@
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/role/toAdd" target=right>挂号</a>
+                        <a class=menuchild href="/register/toReg" target=right>挂号</a>
                     </td>
                 </tr>
                 <tr height=20>
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/role/list" target=right>挂号列表</a>
+                        <a class=menuchild href="/register/list" target=right>挂号列表</a>
                     </td>
                 </tr>
                 <tr height=4>
@@ -76,7 +76,7 @@
                         <img height=9 src="../../static/img/menu_icon.gif" width=9>
                     </td>
                     <td>
-                        <a class=menuchild href="/jyt/toBind" target=right>绑定京医通</a>
+                        <a class=menuchild href="/user/to_bind" target=right>绑定京医通</a>
                     </td>
                 </tr>
                 <tr height=4>
