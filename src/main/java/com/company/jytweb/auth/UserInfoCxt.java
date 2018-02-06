@@ -4,7 +4,12 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
-public class UserInfos {
+/**
+ * 用户信息上下文
+ *
+ * @author wangzhj
+ */
+public class UserInfoCxt {
 
     private static ThreadLocal<Map<String, Object>> THREAD_LOCAL = new ThreadLocal() {
         @Override
@@ -16,7 +21,7 @@ public class UserInfos {
     private static final String KEY_UB_ID = "UB_ID";
 
     /**
-     * 获取UB ID
+     * 设置UB ID
      */
     public static void setUbId(Long ubId) {
         THREAD_LOCAL.get().put(KEY_UB_ID, ubId);

@@ -1,6 +1,6 @@
 package com.company.jytweb.web.interceptor;
 
-import com.company.jytweb.auth.UserInfos;
+import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoDao;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.support.jyt.Resp;
@@ -31,7 +31,7 @@ public class JytBindInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
                              Object handler) throws Exception {
-        Long ubId = UserInfos.getUbId();
+        Long ubId = UserInfoCxt.getUbId();
         UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(ubId);
         if (ujiEO == null || Strings.isNullOrEmpty(ujiEO.getUjiJytCookie())) {
             LOGGER.info("用户[{}]未绑定JYT账户，需要绑定！", ubId);

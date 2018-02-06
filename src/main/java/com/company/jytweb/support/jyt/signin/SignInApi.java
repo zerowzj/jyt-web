@@ -32,8 +32,8 @@ public class SignInApi {
     public static Resp<String> signIn(String phone, String pwd) {
         //参数
         Map<String, Object> params = Maps.newHashMap();
-        params.put("phone", phone);
-        params.put("password", DigestUtils.md5Hex(pwd));
+        params.put("phone", "15210207356");
+        params.put("password", DigestUtils.md5Hex("wzj0211432"));
         //请求
         HttpRequest request = HttpRequest.get(URL, params, false);
         JytHeaders.build(request);

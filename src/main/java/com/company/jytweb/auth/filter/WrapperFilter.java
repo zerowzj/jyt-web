@@ -1,6 +1,6 @@
 package com.company.jytweb.auth.filter;
 
-import com.company.jytweb.auth.UserInfos;
+import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.support.util.SessionUtil;
 import com.company.jytweb.web.SessionUserInfo;
 import org.slf4j.Logger;
@@ -28,12 +28,12 @@ public class WrapperFilter extends OncePerRequestFilter {
         try {
             SessionUserInfo userInfo = SessionUtil.getUserInfo(request);
             if (userInfo != null) {
-                UserInfos.setUbId(userInfo.getUbId());
+                UserInfoCxt.setUbId(userInfo.getUbId());
             }
             //继续执行
             filterChain.doFilter(request, response);
         } finally {
-            UserInfos.clear();
+            UserInfoCxt.clear();
         }
     }
 }

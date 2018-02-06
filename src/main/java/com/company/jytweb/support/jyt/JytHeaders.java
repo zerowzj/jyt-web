@@ -1,6 +1,6 @@
 package com.company.jytweb.support.jyt;
 
-import com.company.jytweb.auth.UserInfos;
+import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.support.JytCookieCache;
 import com.github.kevinsawicki.http.HttpRequest;
 
@@ -30,7 +30,7 @@ public class JytHeaders {
      * @return HttpRequest
      */
     public static HttpRequest build(HttpRequest request) {
-        Long ubId = UserInfos.getUbId();
+        Long ubId = UserInfoCxt.getUbId();
         JytCookie cookie = JytCookieCache.get(ubId);
         request.userAgent(USER_AGENT_VALUE)
                 .header(HEADER_NAME_COOKIE, cookie.getCookie())

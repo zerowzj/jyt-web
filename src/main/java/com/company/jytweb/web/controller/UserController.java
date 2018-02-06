@@ -1,6 +1,6 @@
 package com.company.jytweb.web.controller;
 
-import com.company.jytweb.auth.UserInfos;
+import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.service.user.UserService;
 import com.company.jytweb.support.JytCookieCache;
@@ -26,7 +26,7 @@ public class UserController {
      */
     @RequestMapping("/to_bind")
     public ModelAndView toBind(HttpServletRequest request) {
-        Long ubId = UserInfos.getUbId();
+        Long ubId = UserInfoCxt.getUbId();
         UserJytInfoEO ujiEO = userService.getJytInfo(ubId);
         //
         Map<String, Object> data = Maps.newHashMap();
@@ -42,7 +42,7 @@ public class UserController {
     @RequestMapping("/bind_jyt")
     @ResponseBody
     public Map<String, Object> bind(String jytLoginName, String jytLoginPwd, String jytCookie) {
-        Long ubId = UserInfos.getUbId();
+        Long ubId = UserInfoCxt.getUbId();
         userService.bindJytInfo(ubId, jytLoginName, jytLoginPwd, jytCookie);
 
         JytCookieCache.refresh(ubId);
