@@ -1,5 +1,8 @@
 package com.company.jytweb.service.jyt;
 
+import com.company.jytweb.support.jyt.card.Card;
+import com.company.jytweb.support.jyt.hospital.Hospital;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +18,12 @@ public interface JytService {
      *
      * @return List
      */
-    List<Map<String, Object>> getCardLt();
+    List<Card> getCardLt();
 
     /**
      * 获取医院列表
      *
      * @return List
      */
-    List<Map<String, Object>> getHosLt();
+    List<Hospital> getHosLt();
 }

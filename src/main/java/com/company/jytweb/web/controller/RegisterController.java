@@ -1,17 +1,25 @@
 package com.company.jytweb.web.controller;
 
+import com.company.jytweb.service.jyt.JytService;
 import com.company.jytweb.service.register.RegisterService;
+import com.company.jytweb.support.jyt.card.Card;
+import com.company.jytweb.support.jyt.hospital.Hospital;
+import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
 
+    @Autowired
+    private JytService jytService;
     @Autowired
     private RegisterService registerService;
 
@@ -20,9 +28,14 @@ public class RegisterController {
      */
     @RequestMapping("/to_reg")
     public ModelAndView toReg(HttpServletRequest request) {
+        Map<String, Object> data = Maps.newHashMap();
         //医保卡列表
+        List<Card> cardLt = jytService.getCardLt();
+        data.put("cardLt", cardLt);
         //医院列表
-        return new ModelAndView("/register/reg");
+        List<Hospital> hosLt = jytService.getHosLt();
+        data.put("hosLt", hosLt);
+        return new ModelAndView("/register/reg", data);
     }
 
     /**

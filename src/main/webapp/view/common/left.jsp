@@ -31,7 +31,7 @@
             <table cellspacing=0 cellpadding=0 width=150 border=0>
                 <tr height=22>
                     <td style="padding-left: 30px" background=../../static/img/menu_bt.jpg>
-                        <a class=menuparent onclick=expand(1) href="javascript:void(0);">权限管理</a>
+                        <a class=menuparent onclick=expand(1) href="javascript:void(0);">挂号管理</a>
                     </td>
                 </tr>
                 <tr height=4>
@@ -43,7 +43,7 @@
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/register/toReg" target=right>挂号</a>
+                        <a class=menuchild href="/register/to_reg" target=right>挂号</a>
                     </td>
                 </tr>
                 <tr height=20>

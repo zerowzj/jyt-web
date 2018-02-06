@@ -4,12 +4,12 @@
 <html>
 <head>
     <%
-        String baseUrl = request.getContextPath();
+        String cxtPath = request.getContextPath();
     %>
     <title>修改密码</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <link href="<%=baseUrl%>/static/css/mine.css" type="text/css" rel="stylesheet">
-    <link href="<%=baseUrl%>/static/validform/css/style.css" type="text/css" rel="stylesheet">
+    <link href="<%=cxtPath%>/static/css/mine.css" type="text/css" rel="stylesheet">
+    <link href="<%=cxtPath%>/static/validform/css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <div class="div_head">
@@ -41,30 +41,28 @@
             </tr>
         </table>
     </form>
-    <script type="text/javascript" src="<%=baseUrl%>/static/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=baseUrl%>/static/jqueryform/jquery.form.min.js"></script>
-    <script type="text/javascript" src="<%=baseUrl%>/static/validform/Validform_v5.3.2_min.js"></script>
-    <script type="text/javascript" src="<%=baseUrl%>/static/layer/layer.js"></script>
+    <script type="text/javascript" src="<%=cxtPath%>/static/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=cxtPath%>/static/jqueryform/jquery.form.min.js"></script>
+    <script type="text/javascript" src="<%=cxtPath%>/static/validform/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="<%=cxtPath%>/static/layer/layer.js"></script>
     <script type="text/javascript">
         $("#_form").Validform({
             tiptype: 3,
             tipSweep: false
         });
         $('#_form').ajaxForm({
-            target: '',
             url: '/user/bind_jyt',
-            type: 'POST',
+            type: 'post',
             clearForm: false,
             // beforeSubmit: function (formData, jqForm, options) {
             //     return true;
             // },
             success: function (responseText, statusText, xhr, $form) {
-                alert(statusText);
                 layer.msg('绑定成功', {icon: 1});
             },
             error: function (xhr, statusText, error) {
                 var status = xhr.status;
-                layer.alert('系统异常[' + status + ']', {icon: 5});
+                layer.alert('系统异常[' + status + ']', {icon: 5, offset: '100px'});
             }
         });
     </script>
