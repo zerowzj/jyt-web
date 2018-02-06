@@ -18,7 +18,7 @@ public class BindController {
 
     @RequestMapping("/bind")
     public void bind() {
-        JytCookie cookie = JytCookieCache.get(111L);
+        JytCookie cookie = JytCookieCache.get(1111L);
         System.out.println(cookie.getUcp());
     }
 }
