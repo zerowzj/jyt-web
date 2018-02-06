@@ -20,18 +20,21 @@ import java.io.IOException;
  */
 public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginFailureHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginFailureHandler.class);
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
                                         AuthenticationException exception) throws IOException, ServletException {
-        logger.warn("用户[{}]登录系统失败！", CustomLoginFilter.getLoginName(request));
+        LOGGER.warn("用户[{}]登录系统失败！", CustomLoginFilter.getLoginName(request));
+
+        //TODO
         if (exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException) {
-            logger.error("用户名/密码错误");
+            LOGGER.error("用户名/密码错误");
         } else {
-            logger.error("未知错误");
+            LOGGER.error("未知错误");
         }
 
+        //执行父逻辑
         super.onAuthenticationFailure(request, response, exception);
     }
 }
