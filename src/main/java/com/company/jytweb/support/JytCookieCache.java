@@ -32,11 +32,12 @@ public class JytCookieCache {
     /* JytCookie缓存 */
     private static LoadingCache<Long, JytCookie> CACHE = Caffeine.newBuilder()
             .maximumSize(10000)
-            .expireAfterWrite(10, TimeUnit.SECONDS)
+            .expireAfterWrite(1000, TimeUnit.SECONDS)
             .build(new CacheLoader<Long, JytCookie>() {
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
+                    LOGGER.info("load key=[{}] cookie", key);
                     UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
                     return new JytCookie(ujiEO.getUjiJytCookie());
                 }
@@ -54,7 +55,7 @@ public class JytCookieCache {
      * @return JytCookie
      */
     public static JytCookie get(Long ubId) {
-        JytCookie cookie = CACHE.getIfPresent(ubId);
+        JytCookie cookie = CACHE.get(ubId);
         return cookie;
     }
 
