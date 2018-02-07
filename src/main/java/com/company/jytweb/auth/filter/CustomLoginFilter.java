@@ -29,7 +29,6 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        LOGGER.info("用户[{}]登录系统", getLoginName(request));
         return super.attemptAuthentication(request, response);
     }
 
