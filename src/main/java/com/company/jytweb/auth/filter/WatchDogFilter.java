@@ -1,5 +1,6 @@
 package com.company.jytweb.auth.filter;
 
+import com.company.jytweb.auth.Uris;
 import com.google.common.base.Stopwatch;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
@@ -24,27 +25,31 @@ public class WatchDogFilter extends OncePerRequestFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WatchDogFilter.class);
 
-    private static final String REQUEST_ID_NAME = "Request-Id";
+    private static final String HEADER_NAME_REQUEST_ID = "Request-Id";
 
     private static final String REQUEST_ID = "request_id";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String uri = request.getRequestURI();
-        //
-        Stopwatch stopwatch = Stopwatch.createStarted();
-        try {
+        //==> Uri
+        if (Uris.isLegal(uri)) {
             //
-            String requestId = request.getHeader(REQUEST_ID_NAME);
-            if (Strings.isNullOrEmpty(requestId)) {
-                requestId = String.valueOf(UUID.randomUUID().hashCode() & 0x7fffffff);
+            Stopwatch stopwatch = Stopwatch.createStarted();
+            try {
+                String requestId = request.getHeader(HEADER_NAME_REQUEST_ID);
+                if (Strings.isNullOrEmpty(requestId)) {
+                    requestId = String.valueOf(UUID.randomUUID().hashCode() & 0x7fffffff);
+                }
+                MDC.put(REQUEST_ID, requestId);
+
+                filterChain.doFilter(request, response);
+            } finally {
+                LOGGER.info("uri[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
+                MDC.clear();
             }
-            MDC.put(REQUEST_ID, requestId);
-            //继续执行
+        } else {
             filterChain.doFilter(request, response);
-        } finally {
-            LOGGER.info("uri[{}] cost [{} ms]", uri, stopwatch.elapsed(TimeUnit.MILLISECONDS));
-            MDC.clear();
         }
     }
 }
