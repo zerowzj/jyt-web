@@ -1,9 +1,10 @@
 package com.company.jytweb.web.controller;
 
-import com.company.jytweb.service.jyt.JytService;
 import com.company.jytweb.service.register.RegisterService;
 import com.company.jytweb.support.jyt.card.Card;
+import com.company.jytweb.support.jyt.card.CardApi;
 import com.company.jytweb.support.jyt.hospital.Hospital;
+import com.company.jytweb.support.jyt.hospital.HospitalApi;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,6 @@ import java.util.Map;
 public class RegisterController {
 
     @Autowired
-    private JytService jytService;
-    @Autowired
     private RegisterService registerService;
 
     /**
@@ -30,10 +29,10 @@ public class RegisterController {
     public ModelAndView toReg(HttpServletRequest request) {
         Map<String, Object> data = Maps.newHashMap();
         //医保卡列表
-        List<Card> cardLt = jytService.getCardLt();
+        List<Card> cardLt = CardApi.getCardLt(null).getData().getCardDetailList();
         data.put("cardLt", cardLt);
         //医院列表
-        List<Hospital> hosLt = jytService.getHosLt();
+        List<Hospital> hosLt = HospitalApi.getHospitalLt().getData().getHospitals();
         data.put("hosLt", hosLt);
         return new ModelAndView("/register/reg", data);
     }
@@ -43,8 +42,6 @@ public class RegisterController {
      */
     @RequestMapping("/reg")
     public ModelAndView reg(HttpServletRequest request) {
-        //医保卡列表
-        //医院列表
         return new ModelAndView("/register/reg");
     }
 

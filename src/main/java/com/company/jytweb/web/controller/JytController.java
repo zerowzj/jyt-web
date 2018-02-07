@@ -1,6 +1,5 @@
 package com.company.jytweb.web.controller;
 
-import com.company.jytweb.service.jyt.JytService;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.jyt.department.DepartmentApi;
 import com.company.jytweb.support.jyt.department.DepartmentData;
@@ -14,13 +13,15 @@ import java.util.Map;
 @RequestMapping("/jyt")
 public class JytController {
 
-    @Autowired
-    private JytService jytService;
-
-    @RequestMapping("/dept")
-    public Map<String, String> de() {
+    @RequestMapping("/get_dept")
+    public Map<String, String> getDept(String hosCode) {
         Resp<DepartmentData> resp = DepartmentApi.getDeptLt(null);
 
+        return null;
+    }
+
+    @RequestMapping("/get_date")
+    public Map<String, String> getDate(String hosCode, String firstDeptCode, String secondDeptCode) {
         return null;
     }
 }
