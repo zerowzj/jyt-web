@@ -48,16 +48,16 @@
         UPDATE USER_JYT_INFO
         <set>
             <if test="ujiJytLoginName != null">
-                UJI_JYT_LOGIN_NAME = #{ujiJytLoginName}
+                UJI_JYT_LOGIN_NAME = #{ujiJytLoginName},
             </if>
             <if test="ujiJytLoginPwd != null">
-                ,UJI_JYT_LOGIN_PWD = #{ujiJytLoginPwd}
+                UJI_JYT_LOGIN_PWD = #{ujiJytLoginPwd},
             </if>
             <if test="ujiJytCookie != null">
-                ,UJI_JYT_COOKIE = #{ujiJytCookie}
+                UJI_JYT_COOKIE = #{ujiJytCookie}
             </if>
         </set>
-        WHERE UJI_ID = #{ujtId}
+        WHERE UJI_ID = #{ujiId}
     </update>
 
     <select id="getByUbId" parameterType="java.lang.Long" resultMap="userJytInfoEO">

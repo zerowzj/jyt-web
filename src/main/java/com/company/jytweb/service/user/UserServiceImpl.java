@@ -41,17 +41,17 @@ public class UserServiceImpl implements UserService {
 //        }
         //
         UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(ubId);
-        boolean is_update = true;
+        boolean isUpdate = true;
         if (ujiEO == null) {
             ujiEO = new UserJytInfoEO();
-            is_update = false;
+            isUpdate = false;
         }
         ujiEO.setUjiUbId(ubId);
         ujiEO.setUjiJytLoginName(jytLoginName);
         ujiEO.setUjiJytLoginPwd(jytLoginPwd);
         ujiEO.setUjiJytCookie(jytCookie);
         //
-        if (is_update) {
+        if (isUpdate) {
             userJytInfoDao.update(ujiEO);
         } else {
             userJytInfoDao.insert(ujiEO);

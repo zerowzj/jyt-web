@@ -29,6 +29,9 @@ public class UserController {
         //获取YJT信息
         Long ubId = UserInfoCxt.getUbId();
         UserJytInfoEO ujiEO = userService.getJytInfo(ubId);
+        if (ujiEO == null) {
+            ujiEO = new UserJytInfoEO();
+        }
 
         Map<String, Object> data = Maps.newHashMap();
         data.put("jytLoginName", ujiEO.getUjiJytLoginName());

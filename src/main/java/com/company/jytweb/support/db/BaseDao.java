@@ -21,7 +21,7 @@ public interface BaseDao<PK, E extends BaseEO> {
      * @param entity
      * @return int
      */
-    int update(E entity);
+    int update(E entity) throws RuntimeException;
 
     /**
      * 删除实体
