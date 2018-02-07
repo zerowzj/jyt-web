@@ -37,7 +37,9 @@ public class JytCookieCache {
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
+                    LOGGER.info("===>");
                     LOGGER.info("===> load key=[{}] cookie from db!!!", key);
+                    LOGGER.info("===>");
                     UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
                     return new JytCookie(ujiEO.getUjiJytCookie());
                 }
@@ -45,7 +47,9 @@ public class JytCookieCache {
                 @CheckForNull
                 @Override
                 public JytCookie reload(@Nonnull Long key, @Nonnull JytCookie oldValue) throws Exception {
+                    LOGGER.info("===>");
                     LOGGER.info("===> reload key=[{}] cookie from db!!!", key);
+                    LOGGER.info("===>");
                     return null;
                 }
             });

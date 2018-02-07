@@ -34,11 +34,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void bindJytInfo(Long ubId, String jytLoginName, String jytLoginPwd, String jytCookie) {
         //
-        Resp<String> resp = SignInApi.signIn(jytLoginName, jytLoginPwd);
-        int resCode = resp.getResCode();
-        if (resCode != 0) {
-            throw new IllegalStateException("绑定失败");
-        }
+//        Resp<String> resp = SignInApi.signIn(jytLoginName, jytLoginPwd);
+//        int resCode = resp.getResCode();
+//        if (resCode != 0) {
+//            throw new IllegalStateException("绑定失败");
+//        }
         //
         UserJytInfoEO ujiEO = userJytInfoDao.getByUbId(ubId);
         boolean is_update = true;
