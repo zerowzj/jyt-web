@@ -43,7 +43,7 @@
                     <td align=middle width=30>
                         <img height=9 src="../../static/img/menu_icon.gif" width=9></td>
                     <td>
-                        <a class=menuchild href="/register/to_reg" target=right>挂号</a>
+                        <a class=menuchild href="/jyt/get_hos" target=right>挂号</a>
                     </td>
                 </tr>
                 <tr height=20>

@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td><span class="need">*</span>Cookie</td>
-                <td><textarea rows="10" cols="50">${jytCookie}</textarea></td>
+                <td><textarea name="jytCookie" rows="10" cols="50">${jytCookie}</textarea></td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
@@ -58,7 +58,7 @@
             //     return true;
             // },
             success: function (responseText, statusText, xhr, $form) {
-                layer.msg('绑定成功', {icon: 1});
+                layer.msg('绑定成功', {icon: 1, offset: '100px'});
             },
             error: function (xhr, statusText, error) {
                 var status = xhr.status;
