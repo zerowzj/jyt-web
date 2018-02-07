@@ -27,7 +27,10 @@ public class JytCookie {
         if (Strings.isNullOrEmpty(cookie)) {
             throw new IllegalArgumentException("cookie is null or empty");
         }
-        cookies = Splitter.on(";").trimResults().withKeyValueSeparator("=").split(cookie);
+        cookies = Splitter.on(";")
+                .trimResults()
+                .withKeyValueSeparator("=")
+                .split(cookie);
         this.cookie = cookie;
     }
 
