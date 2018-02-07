@@ -20,8 +20,8 @@
     <table class="table_a" border="1" width="100%">
         <tbody id="data_list">
         <tr style="font-weight: bold;">
-            <td>序号</td>
-            <td>医院名称</td>
+            <td width="5%">序号</td>
+            <td width="30%">医院名称</td>
             <td>所在区</td>
             <td>医院级别</td>
             <td>操作</td>
