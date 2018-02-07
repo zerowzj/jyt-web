@@ -42,7 +42,7 @@
 </div>
 <script type="text/javascript" src="/static/jquery.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $("#data_list").on('click', "a[href='#']", function () {
             layer.open({

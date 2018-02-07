@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +21,11 @@ import java.util.Map;
 @RequestMapping("/jyt")
 public class JytController {
 
+    /**
+     * 医院列表
+     */
     @RequestMapping("/get_hos")
-    public ModelAndView getHos(String hosCode) {
+    public ModelAndView getHos(HttpServletRequest request, HttpServletResponse response) {
         //医院列表
         Resp<HospitalData> resp = HospitalApi.getHospitalLt();
         List<Hospital> hosLt = resp.getData().getHospitals();
@@ -30,8 +35,12 @@ public class JytController {
         return new ModelAndView("/register/hosList", data);
     }
 
+    /**
+     * 科室列表
+     */
     @RequestMapping("/get_dept")
-    public ModelAndView getDept(String hosCode) {
+    public ModelAndView getDept(HttpServletRequest request, HttpServletResponse response,
+                                String hosCode) {
         //科室列表
         Resp<DepartmentData> resp = DepartmentApi.getDeptLt(hosCode);
         List<Department> deptLt = resp.getData().getDepartments();
@@ -41,8 +50,12 @@ public class JytController {
         return new ModelAndView("/register/deptList", data);
     }
 
+    /**
+     * 号源日期
+     */
     @RequestMapping("/get_date")
-    public Map<String, String> getDate(String hosCode, String firstDeptCode, String secondDeptCode) {
+    public Map<String, String> getDate(HttpServletRequest request, HttpServletResponse response,
+                                       String hosCode, String firstDeptCode, String secondDeptCode) {
         return null;
     }
 }
