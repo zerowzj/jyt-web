@@ -23,6 +23,8 @@ public class WrapperFilter extends OncePerRequestFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WrapperFilter.class);
 
+    private static final String LOGIN_PAGE = "login.jsp";
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //
