@@ -14,7 +14,6 @@ public class RegisterParam implements Serializable {
     /* >>>>>>>>>>>>>>>>>>>> */
     /* 医保卡号 */
     private String cardNo;
-
     /* >>>>>>>>>>>>>>>>>>>> */
     /*      就诊科室         */
     /* >>>>>>>>>>>>>>>>>>>> */
@@ -28,7 +27,6 @@ public class RegisterParam implements Serializable {
     private String secondDeptCode;
     /* 二级科室编号 */
     private Long secondDeptId;
-
     /* >>>>>>>>>>>>>>>>>>>> */
     /*      就诊时段         */
     /* >>>>>>>>>>>>>>>>>>>> */
@@ -38,7 +36,6 @@ public class RegisterParam implements Serializable {
     private String productTimeType;
     /*  */
     private String regHour;
-
     /* >>>>>>>>>>>>>>>>>>>> */
     /*       医生信息        */
     /* >>>>>>>>>>>>>>>>>>>> */
@@ -46,8 +43,6 @@ public class RegisterParam implements Serializable {
     private String productType;
     /* 医生编号 */
     private Long doctorId;
-
-
     /* >>>>>>>>>>>>>>>>>>>> */
     /*                      */
     /* >>>>>>>>>>>>>>>>>>>> */
