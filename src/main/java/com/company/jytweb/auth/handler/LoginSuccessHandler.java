@@ -1,7 +1,7 @@
 package com.company.jytweb.auth.handler;
 
 import com.company.jytweb.auth.user.CustomUserDetails;
-import com.company.jytweb.support.util.SessionUtil;
+import com.company.jytweb.web.support.SessionUtil;
 import com.company.jytweb.web.support.SessionUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
