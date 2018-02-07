@@ -1,5 +1,6 @@
 package com.company.jytweb.auth.filter;
 
+import com.company.jytweb.auth.Uris;
 import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.web.support.SessionUserInfo;
 import com.company.jytweb.web.support.SessionUtil;
@@ -25,13 +26,13 @@ public class WrapperFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //
+        String uri = request.getRequestURI();
         try {
             SessionUserInfo userInfo = SessionUtil.getUserInfo(request);
-            if (userInfo == null) {
-                LOGGER.info("user session is null!");
-                return;
+            if (userInfo != null) {
+                UserInfoCxt.setUbId(userInfo.getUbId());
             }
-            UserInfoCxt.setUbId(userInfo.getUbId());
+
             filterChain.doFilter(request, response);
         } finally {
             UserInfoCxt.clear();

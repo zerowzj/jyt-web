@@ -36,4 +36,6 @@
     </mvc:interceptors>
     <!-- 静态资源 -->
     <mvc:resources mapping="/static/**" location="/static/"/>
+
+    <bean class="com.company.jytweb.auth.Uris" />
 </beans>

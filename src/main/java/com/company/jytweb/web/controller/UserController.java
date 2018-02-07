@@ -4,6 +4,7 @@ import com.company.jytweb.auth.UserInfoCxt;
 import com.company.jytweb.dao.userjytinfo.UserJytInfoEO;
 import com.company.jytweb.service.user.UserService;
 import com.company.jytweb.support.JytCookieCache;
+import com.company.jytweb.web.support.SpringContext;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,10 +23,13 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 跳转到JYT绑定页面
+     * 跳转到绑定JYT页面
      */
     @RequestMapping("/to_bind")
     public ModelAndView toBind(HttpServletRequest request) {
+
+        UserService userService = SpringContext.getBean("userService");
+
         Long ubId = UserInfoCxt.getUbId();
         UserJytInfoEO ujiEO = userService.getJytInfo(ubId);
         //
@@ -41,7 +45,7 @@ public class UserController {
      */
     @RequestMapping("/bind_jyt")
     @ResponseBody
-    public Map<String, Object> bind(String jytLoginName, String jytLoginPwd, String jytCookie) {
+    public Map<String, Object> bindJyt(String jytLoginName, String jytLoginPwd, String jytCookie) {
         Long ubId = UserInfoCxt.getUbId();
         userService.bindJytInfo(ubId, jytLoginName, jytLoginPwd, jytCookie);
 

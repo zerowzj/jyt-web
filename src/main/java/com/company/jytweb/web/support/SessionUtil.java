@@ -1,4 +1,4 @@
-package com.company.jytweb.support.util;
+package com.company.jytweb.web.support;
 
 import com.company.jytweb.web.support.SessionUserInfo;
 
