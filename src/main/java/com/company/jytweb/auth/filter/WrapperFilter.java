@@ -1,8 +1,8 @@
 package com.company.jytweb.auth.filter;
 
 import com.company.jytweb.auth.UserInfoCxt;
-import com.company.jytweb.support.util.SessionUtil;
 import com.company.jytweb.web.support.SessionUserInfo;
+import com.company.jytweb.web.support.SessionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 看门狗
+ *
  *
  * @author wangzhj
  */
@@ -27,10 +27,11 @@ public class WrapperFilter extends OncePerRequestFilter {
         //
         try {
             SessionUserInfo userInfo = SessionUtil.getUserInfo(request);
-            if (userInfo != null) {
-                UserInfoCxt.setUbId(userInfo.getUbId());
+            if (userInfo == null) {
+                LOGGER.info("user session is null!");
+                return;
             }
-            //继续执行
+            UserInfoCxt.setUbId(userInfo.getUbId());
             filterChain.doFilter(request, response);
         } finally {
             UserInfoCxt.clear();

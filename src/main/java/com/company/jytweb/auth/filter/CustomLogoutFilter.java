@@ -7,7 +7,7 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 /**
- * 注销过滤器
+ * 注销
  *
  * @author wangzhj
  */
