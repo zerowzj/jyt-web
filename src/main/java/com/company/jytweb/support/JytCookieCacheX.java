@@ -70,11 +70,4 @@ public class JytCookieCacheX {
     public static void remove(Long ubId) {
         CACHE.invalidate(ubId);
     }
-
-    /**
-     *
-     */
-    public static void status() {
-        CACHE.stats();
-    }
 }
