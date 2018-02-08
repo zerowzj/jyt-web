@@ -40,18 +40,21 @@ public class JytCookieCache {
                     }
             )
             .build(new CacheLoader<Long, JytCookie>() {
-
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
-                    LOGGER.info("===>");
-                    LOGGER.info("===> load key=[{}] from db!!!", key);
-                    LOGGER.info("===>");
                     UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
-                    return new JytCookie(ujiEO.getUjiJytCookie());
+                    JytCookie cookie = null;
+                    if (ujiEO != null) {
+                        LOGGER.info("got key=[{}] from db.", key);
+                        cookie = new JytCookie(ujiEO.getUjiJytCookie());
+                    } else {
+                        LOGGER.info("key=[{}] not exist in db!!!", key);
+                    }
+                    return cookie;
                 }
 
-                @CheckForNull
+               /* @CheckForNull
                 @Override
                 public JytCookie reload(@Nonnull Long key, @Nonnull JytCookie oldValue) throws Exception {
                     LOGGER.info("===>");
@@ -59,7 +62,7 @@ public class JytCookieCache {
                     LOGGER.info("===>");
                     UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
                     return new JytCookie(ujiEO.getUjiJytCookie());
-                }
+                }*/
             });
 
     @PostConstruct
