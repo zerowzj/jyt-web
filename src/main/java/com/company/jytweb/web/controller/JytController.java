@@ -1,6 +1,7 @@
 package com.company.jytweb.web.controller;
 
 import com.company.jytweb.support.JytCookieCache;
+import com.company.jytweb.support.JytCookieCacheX;
 import com.company.jytweb.support.jyt.JytCookie;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.jyt.department.Department;
@@ -63,21 +64,5 @@ public class JytController {
     public Map<String, String> getDate(HttpServletRequest request, HttpServletResponse response,
                                        String hosCode, String firstDeptCode, String secondDeptCode) {
         return null;
-    }
-
-    @RequestMapping("/get")
-    public void get(){
-        JytCookie cookie = JytCookieCache.get(1L);
-        LOGGER.info("====> {}", cookie.getCookie());
-    }
-
-    @RequestMapping("/refresh")
-    public void refresh(){
-        JytCookieCache.refresh(1L);
-    }
-
-    @RequestMapping("/status")
-    public void status(){
-        JytCookieCache.status();
     }
 }
