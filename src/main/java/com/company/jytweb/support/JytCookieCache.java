@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 import javax.annotation.PostConstruct;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -65,9 +67,24 @@ public class JytCookieCache {
                 }*/
             });
 
+    public static ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
+
     @PostConstruct
     public void init() {
         JYT_COOKIE_CACHE = this;
+    }
+
+    static {
+//        new Thread(() -> {
+//            while (true) {
+//                status();
+//                try {
+//                    TimeUnit.SECONDS.sleep(10);
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
+//        }).start();
     }
 
     /**
