@@ -118,7 +118,7 @@ public class JytCookieCache {
     }
 
     /**
-     * 删除JytCookie
+     * JytCookie
      */
     public static void status() {
         CacheStats status = CACHE.stats();
