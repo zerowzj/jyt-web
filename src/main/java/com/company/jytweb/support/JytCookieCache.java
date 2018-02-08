@@ -6,6 +6,8 @@ import com.company.jytweb.support.jyt.JytCookie;
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import com.github.benmanes.caffeine.cache.RemovalCause;
+import com.github.benmanes.caffeine.cache.stats.CacheStats;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +31,14 @@ public class JytCookieCache {
 
     public static JytCookieCache JYT_COOKIE_CACHE;
 
-    /* JytCookie缓存 */
     private static LoadingCache<Long, JytCookie> CACHE = Caffeine.newBuilder()
             .maximumSize(10000)
-            .expireAfterWrite(1000, TimeUnit.SECONDS)
+            .expireAfterWrite(20, TimeUnit.SECONDS)
+            .recordStats()
+            .removalListener((Long key, JytCookie value, RemovalCause cause) -> {
+                        LOGGER.info("key=[{}] was removed, because of [{}]", key, cause.name());
+                    }
+            )
             .build(new CacheLoader<Long, JytCookie>() {
                 @CheckForNull
                 @Override
@@ -50,7 +56,8 @@ public class JytCookieCache {
                     LOGGER.info("===>");
                     LOGGER.info("===> reload key=[{}] cookie from db!!!", key);
                     LOGGER.info("===>");
-                    return null;
+                    UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
+                    return new JytCookie(ujiEO.getUjiJytCookie());
                 }
             });
 
@@ -78,5 +85,22 @@ public class JytCookieCache {
      */
     public static void refresh(Long ubId) {
         CACHE.refresh(ubId);
+    }
+
+    /**
+     * 删除JytCookie
+     *
+     * @param ubId
+     */
+    public static void remove(Long ubId) {
+        CACHE.invalidate(ubId);
+    }
+
+    /**
+     * 删除JytCookie
+     */
+    public static void status() {
+        CacheStats status = CACHE.stats();
+        LOGGER.info("hitCount: {}", status.hitCount());
     }
 }
