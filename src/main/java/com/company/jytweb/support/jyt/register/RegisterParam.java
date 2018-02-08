@@ -9,14 +9,14 @@ import java.io.Serializable;
  */
 public class RegisterParam implements Serializable {
 
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
     /*       就诊人          */
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
     /* 医保卡号 */
     private String cardNo;
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
     /*      就诊科室         */
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
     /* 医院编号 */
     private String hosCode;
     /* 一级科室编码 */
@@ -27,33 +27,33 @@ public class RegisterParam implements Serializable {
     private String secondDeptCode;
     /* 二级科室编号 */
     private Long secondDeptId;
-    /* >>>>>>>>>>>>>>>>>>>> */
-    /*      就诊时段         */
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
+    /*      就诊时间         */
+    /* ==================== */
     /* 就诊时间 */
     private String treatmentDay;
     /* 就诊时段 */
     private String productTimeType;
     /*  */
-    private String regHour;
-    /* >>>>>>>>>>>>>>>>>>>> */
+    private String regHour = "";
+    /* ==================== */
     /*       医生信息        */
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
+    /* 号源编号 */
+    private String productId;
     /* 医生职称 */
     private String productType;
     /* 医生编号 */
     private Long doctorId;
-    /* >>>>>>>>>>>>>>>>>>>> */
+    /* ==================== */
     /*                      */
-    /* >>>>>>>>>>>>>>>>>>>> */
-    /* 号源编号 */
-    private String productId;
+    /* ==================== */
     /*  */
-    private String orderProductType;
+    private String orderProductType = "0";
     /*  */
-    private String orderFrom;
+    private String orderFrom = "REGISTER";
     /*  */
-    private String price;
+    private String price = "0";
 
     public String getCardNo() {
         return cardNo;
