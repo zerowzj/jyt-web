@@ -40,6 +40,7 @@ public class JytCookieCache {
                     }
             )
             .build(new CacheLoader<Long, JytCookie>() {
+
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
@@ -78,6 +79,15 @@ public class JytCookieCache {
     }
 
     /**
+     * 移除JytCookie
+     *
+     * @param ubId
+     */
+    public static void remove(Long ubId) {
+        CACHE.invalidate(ubId);
+    }
+
+    /**
      * 刷新JytCookie
      *
      * @param ubId
@@ -85,15 +95,6 @@ public class JytCookieCache {
      */
     public static void refresh(Long ubId) {
         CACHE.refresh(ubId);
-    }
-
-    /**
-     * 删除JytCookie
-     *
-     * @param ubId
-     */
-    public static void remove(Long ubId) {
-        CACHE.invalidate(ubId);
     }
 
     /**

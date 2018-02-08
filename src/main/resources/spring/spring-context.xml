@@ -27,4 +27,6 @@
     </bean>
     <!--  -->
     <bean class="com.company.jytweb.support.JytCookieCache"/>
+    <bean class="com.company.jytweb.support.JytCookieCacheX"/>
+    <bean class="com.company.jytweb.support.JytCookieCacheY"/>
 </beans>
