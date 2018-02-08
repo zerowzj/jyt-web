@@ -32,7 +32,7 @@ public class JytCookieCacheX {
             .expireAfterWrite(20, TimeUnit.SECONDS)
             .recordStats()
             .removalListener((Long key, JytCookie value, RemovalCause cause) -> {
-                        LOGGER.info("key=[{}] was removed, because of [{}]", key, cause.name().toLowerCase());
+                        LOGGER.info("key=[{}] removed, because of [{}]", key, cause.name().toLowerCase());
                     }
             ).build();
 
