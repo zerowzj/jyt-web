@@ -1,5 +1,7 @@
 package com.company.jytweb.web.controller;
 
+import com.company.jytweb.support.JytCookieCache;
+import com.company.jytweb.support.jyt.JytCookie;
 import com.company.jytweb.support.jyt.Resp;
 import com.company.jytweb.support.jyt.department.Department;
 import com.company.jytweb.support.jyt.department.DepartmentApi;
@@ -8,6 +10,8 @@ import com.company.jytweb.support.jyt.hospital.Hospital;
 import com.company.jytweb.support.jyt.hospital.HospitalApi;
 import com.company.jytweb.support.jyt.hospital.HospitalData;
 import com.google.common.collect.Maps;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +24,8 @@ import java.util.Map;
 @Controller
 @RequestMapping("/jyt")
 public class JytController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(JytController.class);
 
     /**
      * 医院列表
@@ -57,5 +63,21 @@ public class JytController {
     public Map<String, String> getDate(HttpServletRequest request, HttpServletResponse response,
                                        String hosCode, String firstDeptCode, String secondDeptCode) {
         return null;
+    }
+
+    @RequestMapping("/get")
+    public void get(){
+        JytCookie cookie = JytCookieCache.get(1L);
+        LOGGER.info("====> {}", cookie.getCookie());
+    }
+
+    @RequestMapping("/refresh")
+    public void refresh(){
+        JytCookieCache.refresh(1L);
+    }
+
+    @RequestMapping("/status")
+    public void status(){
+        JytCookieCache.status();
     }
 }
