@@ -32,7 +32,7 @@ public class JytCookieCacheX {
             .expireAfterWrite(20, TimeUnit.SECONDS)
             .recordStats()
             .removalListener((Long key, JytCookie value, RemovalCause cause) -> {
-                        LOGGER.info("key=[{}] was removed, because of [{}]", key, cause.name());
+                        LOGGER.info("key=[{}] was removed, because of [{}]", key, cause.name().toLowerCase());
                     }
             ).build();
 
@@ -50,13 +50,20 @@ public class JytCookieCacheX {
     public static JytCookie get(Long ubId) {
         JytCookie cookie = CACHE.get(ubId, key -> {
             UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
-            return new JytCookie(ujiEO.getUjiJytCookie());
+            JytCookie myCookie = null;
+            if (ujiEO != null) {
+                LOGGER.info("got key=[{}] from db.", key);
+                myCookie = new JytCookie(ujiEO.getUjiJytCookie());
+            } else {
+                LOGGER.info("key=[{}] not exist in db!!!", key);
+            }
+            return myCookie;
         });
         return cookie;
     }
 
     /**
-     * 删除JytCookie
+     * 移除JytCookie
      *
      * @param ubId
      */
@@ -65,8 +72,9 @@ public class JytCookieCacheX {
     }
 
     /**
-     * 删除JytCookie
+     *
      */
     public static void status() {
+        CACHE.stats();
     }
 }
