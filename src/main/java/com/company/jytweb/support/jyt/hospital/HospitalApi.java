@@ -33,8 +33,4 @@ public class HospitalApi {
         LOGGER.info(body);
         return resp;
     }
-
-    public static void main(String[] args) {
-        getHospitalLt();
-    }
 }

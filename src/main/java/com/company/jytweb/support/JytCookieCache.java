@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
-import javax.annotation.PostConstruct;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,7 @@ public class JytCookieCache {
     @Autowired
     private UserJytInfoDao userJytInfoDao;
 
-    public static JytCookieCache JYT_COOKIE_CACHE;
+    public static UserJytInfoDao USER_JYT_INFO_DAO;
 
     private static LoadingCache<Long, JytCookie> CACHE = Caffeine.newBuilder()
             .maximumSize(10000)
@@ -45,10 +44,10 @@ public class JytCookieCache {
                 @CheckForNull
                 @Override
                 public JytCookie load(@Nonnull Long key) throws Exception {
-                    UserJytInfoEO ujiEO = JYT_COOKIE_CACHE.userJytInfoDao.getByUbId(key);
+                    UserJytInfoEO ujiEO = USER_JYT_INFO_DAO.getByUbId(key);
                     JytCookie cookie = null;
                     if (ujiEO != null) {
-                        LOGGER.info("got key=[{}] from db.", key);
+                        LOGGER.info("loaded key=[{}] from db.", key);
                         cookie = new JytCookie(ujiEO.getUjiJytCookie());
                     } else {
                         LOGGER.info("key=[{}] not exist in db!!!", key);
@@ -69,9 +68,16 @@ public class JytCookieCache {
 
     public static ScheduledThreadPoolExecutor executor = (ScheduledThreadPoolExecutor) Executors.newScheduledThreadPool(1);
 
-    @PostConstruct
-    public void init() {
-        JYT_COOKIE_CACHE = this;
+//    //TODO 方式一
+//    @PostConstruct
+//    public void init() {
+//        USER_JYT_INFO_DAO = userJytInfoDao;
+//    }
+
+    //TODO 方式二
+    @Autowired
+    public void setUserJytInfoDao(UserJytInfoDao userJytInfoDao) {
+        USER_JYT_INFO_DAO = userJytInfoDao;
     }
 
     static {
