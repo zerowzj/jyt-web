@@ -22,6 +22,8 @@ public class UserInfoCxt {
 
     /**
      * 设置UB ID
+     *
+     * @param ubId
      */
     public static void setUbId(Long ubId) {
         THREAD_LOCAL.get().put(KEY_UB_ID, ubId);
@@ -29,12 +31,17 @@ public class UserInfoCxt {
 
     /**
      * 获取UB ID
+     *
+     * @return Long
      */
     public static Long getUbId() {
         Long ubId = (Long) THREAD_LOCAL.get().get(KEY_UB_ID);
         return ubId;
     }
 
+    /**
+     * 清除
+     */
     public static void clear() {
         THREAD_LOCAL.remove();
     }
